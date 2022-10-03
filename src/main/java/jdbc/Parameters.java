@@ -1,4 +1,4 @@
-package main.java.jdbc;
+package jdbc;
 
 public interface Parameters {
     String dbtype = "mysql";
