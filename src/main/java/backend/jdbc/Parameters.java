@@ -1,4 +1,4 @@
-package jdbc;
+package backend.jdbc;
 
 public interface Parameters {
     String dbtype = "mysql";
