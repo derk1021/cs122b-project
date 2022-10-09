@@ -57,7 +57,12 @@ function handleResult(resultData) {
     let starsTableBodyElement = jQuery("#stars_body");
 
     // Concatenate the html tags with resultData jsonObject to create table rows
-    for (let i = 0; i < Math.min(10, resultData.length); i++) {
+    const genres = new Set();
+    for (let i = 0; i < resultData.length; i++) {
+        if (genres.has(resultData[i]["genre_id"])) {
+            continue;
+        }
+        genres.add(resultData[i]["genre_id"])
         let rowHTML = "";
         rowHTML += "<tr>";
         rowHTML += "<th>" + resultData[i]["genre_name"] + "</th>";
@@ -68,7 +73,7 @@ function handleResult(resultData) {
     }
 
     // Concatenate the html tags with resultData jsonObject to create table rows
-    for (let i = 0; i < Math.min(10, resultData.length); i++) {
+    for (let i = 0; i < resultData.length; i++) {
         let rowHTML = "";
         rowHTML += "<tr>";
         rowHTML += "<th>" + '<a href="single-star.html?id=' + resultData[i]['star_id'] + '">'

@@ -49,7 +49,7 @@ public class MoviesServlet extends HttpServlet {
             // Declare our statement
             Statement statement = conn.createStatement();
 
-            String query = "select movies.id, movies.title, movies.year, movies.director, genres.name, stars.name, stars.id, ratings.rating\n" +
+            String query = "select movies.id, movies.title, movies.year, movies.director, group_concat(genres.name), group_concat(stars.name), group_concat(stars.id), ratings.rating\n" +
                     "from movies, genres, stars, ratings, stars_in_movies, genres_in_movies\n" +
                     "where movies.id in (SELECT * FROM (select movies.id as mid\n" +
                     "from movies, ratings\n" +
@@ -57,6 +57,7 @@ public class MoviesServlet extends HttpServlet {
                     "order by rating DESC\n" +
                     "LIMIT 20) as t)\n" +
                     "and movies.id = genres_in_movies.movieId and genres_in_movies.genreId = genres.id and stars_in_movies.starId = stars.id and stars_in_movies.movieId = movies.id and movies.id = ratings.movieId\n" +
+                    "group by movies.id\n" +
                     "ORDER BY rating desc, movies.id";
 
             // Perform the query
@@ -71,8 +72,10 @@ public class MoviesServlet extends HttpServlet {
                 String movie_year = rs.getString("year");
                 String movie_dir = rs.getString("director");
 
-                String star_id = rs.getString("stars.id");
-                String star_name = rs.getString("stars.name");
+                String star_id = rs.getString("group_concat(stars.id)");
+                String star_name = rs.getString("group_concat(stars.name)");
+
+                String genres_name = rs.getString("group_concat(genres.name)");
 
                 String movie_rating = rs.getString("rating");
 
@@ -83,6 +86,7 @@ public class MoviesServlet extends HttpServlet {
                 jsonObject.addProperty("movie_year", movie_year);
                 jsonObject.addProperty("movie_dir", movie_dir);
                 jsonObject.addProperty("movie_rating", movie_rating);
+                jsonObject.addProperty("genres_name", genres_name);
                 jsonObject.addProperty("star_id", star_id);
                 jsonObject.addProperty("star_name", star_name);
 

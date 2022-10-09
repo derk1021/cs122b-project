@@ -17,15 +17,23 @@ public class jdbc implements Parameters {
             Statement select = connection.createStatement();
             ResultSet result = select.executeQuery(
                     // movies
-                    "SELECT m.id, m.title, m.year, m.director, r.rating, g.name, s.name, s.id from stars as s, stars_in_movies as sim, movies as m, genres as g, genres_in_movies as gim, ratings as r " +
-                            "where m.id = sim.movieId and sim.starId = s.id and m.id = gim.movieId and g.id = gim.genreId and r.movieId = m.id and m.id = 'tt0395642'");
+                    "select movies.id, movies.title, movies.year, movies.director, group_concat(genres.name), group_concat(stars.name), group_concat(stars.id), ratings.rating\n" +
+                            "from movies, genres, stars, ratings, stars_in_movies, genres_in_movies\n" +
+                            "where movies.id in (SELECT * FROM (select movies.id as mid\n" +
+                            "from movies, ratings\n" +
+                            "where movies.id = ratings.movieId\n" +
+                            "order by rating DESC\n" +
+                            "LIMIT 20) as t)\n" +
+                            "and movies.id = genres_in_movies.movieId and genres_in_movies.genreId = genres.id and stars_in_movies.starId = stars.id and stars_in_movies.movieId = movies.id and movies.id = ratings.movieId\n" +
+                            "group by movies.id\n" +
+                            "ORDER BY rating desc, movies.id");
             while (result.next()) {
                 System.out.println("Title = " + result.getString("title"));
                 System.out.println("Year = " + result.getString("year"));
                 System.out.println("Director = " + result.getString("director"));
-                System.out.println("Genre = " + result.getString("g.name"));
-                System.out.println("Star Name = " + result.getString("s.name"));
-                System.out.println("Star Id = " + result.getString("s.id"));
+                System.out.println("Genre = " + result.getString("group_concat(genres.name)"));
+                System.out.println("Star Name = " + result.getString("group_concat(stars.name)"));
+                System.out.println("Star Id = " + result.getString("group_concat(stars.id)"));
                 System.out.println("Name = " + result.getString("rating"));
                 System.out.println();
             }
