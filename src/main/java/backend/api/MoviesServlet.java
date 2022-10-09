@@ -16,45 +16,48 @@ import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.sql.*;
 
 
 // Declaring a WebServlet called StarsServlet, which maps to url "/api/stars"
-@WebServlet(name = "StarsServlet", urlPatterns = "/api/stars")
-public class StarsServlet extends HttpServlet {
+@WebServlet(name = "MoviesServlet", urlPatterns = "/api/movies")
+public class MoviesServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     // Create a dataSource which registered in web.
-//    private DataSource dataSource;
-//
-//    public void init(ServletConfig config) {
-//        try {
-//            dataSource = (DataSource) new InitialContext().lookup("java:comp/env/jdbc/moviedb");
-//        } catch (NamingException e) {
-//            e.printStackTrace();
-//        }
-//    }
+    private DataSource dataSource;
+
+    public void init(ServletConfig config) {
+        try {
+            dataSource = (DataSource) new InitialContext().lookup("java:comp/env/jdbc/moviedb");
+        } catch (NamingException e) {
+            e.printStackTrace();
+        }
+    }
 
     /**
      * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        String loginUser = "";
-        String loginPasswd = "";
-        String loginUrl = "jdbc:mysql://localhost:3306/moviedb";
+
         response.setContentType("application/json"); // Response mime type
 
         // Output stream to STDOUT
         PrintWriter out = response.getWriter();
-
-        Class.forName("com.mysql.jdbc.Driver");
         // Get a connection from dataSource and let resource manager close the connection after usage.
         try (Connection conn = dataSource.getConnection()) {
 
             // Declare our statement
             Statement statement = conn.createStatement();
 
-            String query = "SELECT * from movies limit 10";
+            String query = "select movies.id, movies.title, movies.year, movies.director, genres.name, stars.name, ratings.rating\n" +
+                    "from movies, genres, stars, ratings, stars_in_movies, genres_in_movies\n" +
+                    "where movies.id in (SELECT * FROM (select movies.id as mid\n" +
+                    "from movies, ratings\n" +
+                    "where movies.id = ratings.movieId\n" +
+                    "order by rating DESC\n" +
+                    "LIMIT 20) as t)\n" +
+                    "and movies.id = genres_in_movies.movieId and genres_in_movies.genreId = genres.id and stars_in_movies.starId = stars.id and stars_in_movies.movieId = movies.id and movies.id = ratings.movieId\n" +
+                    "ORDER BY rating desc, movies.id";
 
             // Perform the query
             ResultSet rs = statement.executeQuery(query);
@@ -63,15 +66,19 @@ public class StarsServlet extends HttpServlet {
 
             // Iterate through each row of rs
             while (rs.next()) {
+                String movie_id = rs.getString("id");
                 String movie_title = rs.getString("title");
                 String movie_year = rs.getString("year");
                 String movie_dir = rs.getString("director");
+                String movie_rating = rs.getString("rating");
 
                 // Create a JsonObject based on the data we retrieve from rs
                 JsonObject jsonObject = new JsonObject();
+                jsonObject.addProperty("movie_id", movie_id);
                 jsonObject.addProperty("movie_title", movie_title);
                 jsonObject.addProperty("movie_year", movie_year);
                 jsonObject.addProperty("movie_dir", movie_dir);
+                jsonObject.addProperty("movie_rating", movie_rating);
 
                 jsonArray.add(jsonObject);
             }

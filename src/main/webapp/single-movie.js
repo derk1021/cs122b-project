@@ -42,12 +42,12 @@ function handleResult(resultData) {
 
     // populate the star info h3
     // find the empty h3 body by id "star_info"
-    let starInfoElement = jQuery("#star_info");
+    let movieInfoElement = jQuery("#movie_info");
 
     // append two html <p> created to the h3 body, which will refresh the page
-    starInfoElement.append("<p>Movie Title: " + resultData[0]["movie_title"] + "</p>" +
+    movieInfoElement.append("<p>Movie Title: " + resultData[0]["movie_title"] + "</p>" +
         "<p>Year: " + resultData[0]["movie_year"] + "</p>" +
-        "<p>Rating: " + resultData[0]["movie_rating"] + "</p>");
+        "<p>Rating: " + resultData[0]["rating"] + "</p>");
 
     console.log("handleResult: populating movie table from resultData");
 
@@ -59,7 +59,7 @@ function handleResult(resultData) {
     for (let i = 0; i < Math.min(10, resultData.length); i++) {
         let rowHTML = "";
         rowHTML += "<tr>";
-        rowHTML += "<th>" + resultData[i]["genre"];
+        rowHTML += "<th>" + resultData[i]["genre_name"];
         rowHTML += "</tr>";
 
         // Append the row created to the table body, which will refresh the page

@@ -26,7 +26,7 @@ public class SingleMovieServlet extends HttpServlet {
 
     public void init(ServletConfig config) {
         try {
-            dataSource = (DataSource) new InitialContext().lookup("java:comp/env/jdbc/moviedbexample");
+            dataSource = (DataSource) new InitialContext().lookup("java:comp/env/jdbc/moviedb");
         } catch (NamingException e) {
             e.printStackTrace();
         }
@@ -54,8 +54,8 @@ public class SingleMovieServlet extends HttpServlet {
             // Get a connection from dataSource
 
             // Construct a query with parameter represented by "?"
-            String query = "SELECT * from stars as s, stars_in_movies as sim, movies as m, genres as g, genres_in_movies as gim" +
-                    "where m.id = sim.movieId and sim.starId = s.id and s.id = m.id and m.id = gim.movieId and gim.movieId = m.id and m.id = ?";
+            String query = "SELECT m.id, m.title, m.year, m.director, r.rating, g.name, s.name, s.id from stars as s, stars_in_movies as sim, movies as m, genres as g, genres_in_movies as gim, ratings as r " +
+                    "where m.id = sim.movieId and sim.starId = s.id and m.id = gim.movieId and g.id = gim.genreId and r.movieId = m.id and m.id = ?";
 
             // Declare our statement
             PreparedStatement statement = conn.prepareStatement(query);
@@ -72,30 +72,29 @@ public class SingleMovieServlet extends HttpServlet {
             // Iterate through each row of rs
             while (rs.next()) {
 
-                String starId = rs.getString("starId");
-                String starName = rs.getString("name");
-                String starDob = rs.getString("birthYear");
+                String starId = rs.getString("s.id");
+                String starName = rs.getString("s.name");
 
-                String movieId = rs.getString("movieId");
-                String movieTitle = rs.getString("title");
-                String movieYear = rs.getString("year");
-                String movieDirector = rs.getString("director");
+                String movieId = rs.getString("m.id");
+                String movieTitle = rs.getString("m.title");
+                String movieYear = rs.getString("m.year");
+                String movieDirector = rs.getString("m.director");
 
-                String genreId = rs.getString("genreId");
-                String genreName = rs.getString("name");
+                String genreName = rs.getString("g.name");
+
+                String rating = rs.getString("r.rating");
 
                 // Create a JsonObject based on the data we retrieve from rs
 
                 JsonObject jsonObject = new JsonObject();
                 jsonObject.addProperty("star_id", starId);
                 jsonObject.addProperty("star_name", starName);
-                jsonObject.addProperty("star_dob", starDob);
                 jsonObject.addProperty("movie_id", movieId);
                 jsonObject.addProperty("movie_title", movieTitle);
                 jsonObject.addProperty("movie_year", movieYear);
                 jsonObject.addProperty("movie_director", movieDirector);
-                jsonObject.addProperty("genre_id", genreId);
                 jsonObject.addProperty("genre_name", genreName);
+                jsonObject.addProperty("rating", rating);
 
                 jsonArray.add(jsonObject);
             }
