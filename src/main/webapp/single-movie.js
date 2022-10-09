@@ -54,27 +54,27 @@ function handleResult(resultData) {
     // Populate the star table
     // Find the empty table body by id "movie_table_body"
     let genreTableBodyElement = jQuery("#genre_body");
-
-    // Concatenate the html tags with resultData jsonObject to create table rows
-    for (let i = 0; i < Math.min(10, resultData.length); i++) {
-        let rowHTML = "";
-        rowHTML += "<tr>";
-        rowHTML += "<th>" + resultData[i]["genre_name"];
-        rowHTML += "</tr>";
-
-        // Append the row created to the table body, which will refresh the page
-        genreTableBodyElement.append(rowHTML);
-    }
-
     let starsTableBodyElement = jQuery("#stars_body");
 
     // Concatenate the html tags with resultData jsonObject to create table rows
     for (let i = 0; i < Math.min(10, resultData.length); i++) {
         let rowHTML = "";
         rowHTML += "<tr>";
-        rowHTML += '<a href="single-star.html?id=' + resultData[i]['star_id'] + '">'
+        rowHTML += "<th>" + resultData[i]["genre_name"] + "</th>";
+        rowHTML += "</tr>";
+
+        // Append the row created to the table body, which will refresh the page
+        genreTableBodyElement.append(rowHTML);
+    }
+
+    // Concatenate the html tags with resultData jsonObject to create table rows
+    for (let i = 0; i < Math.min(10, resultData.length); i++) {
+        let rowHTML = "";
+        rowHTML += "<tr>";
+        rowHTML += "<th>" + '<a href="single-star.html?id=' + resultData[i]['star_id'] + '">'
             + resultData[i]["star_name"] +     // display star_name for the link text
-            '</a>'
+            '</a>' + "</th>"
+        rowHTML += resultData[i]["star_name"]
         rowHTML += "</tr>";
 
         // Append the row created to the table body, which will refresh the page

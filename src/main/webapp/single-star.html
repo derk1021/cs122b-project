@@ -1,3 +1,10 @@
+<!-- This example is following frontend and backend separation.
+
+    This .html performs two steps:
+    1. Create a html template skeleton, with all the elements defined (some left empty) and named with ids.
+    2. Load single-star.js to populate the data into empty elements.
+    -->
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -13,21 +20,23 @@
     <title>Single Star</title>
 </head>
 <body>
+<a href="/cs122b-project">Back to Movie List</a>
 <h1>Single Star Page</h1>
 
 <!-- H3 body is left empty here, will be populated with the data retrieved with single-star.js -->
 <!-- single-star.js will find this html element by it's id "star_info" -->
-<h3 id="movie_info"></h3>
+<h3 id="star_info"></h3>
 <table id=movie_table class="table table-striped">
     <thead>
     <tr>
         <th>Movie Title</th>
+        <th>
     </tr>
     </thead>
 
     <!-- Table body is left empty here, will be populated with the data retrieved with single-star.js -->
     <!-- single-star.js will find this html element by it's id "movie_table_body" -->
-    <tbody id=movie_body></tbody>
+    <tbody id=movie_table_body></tbody>
 </table>
 
 <!-- Load jQuery and Bootstrap JS -->

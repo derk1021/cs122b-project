@@ -25,6 +25,7 @@ public class jdbc implements Parameters {
                 System.out.println("Director = " + result.getString("director"));
                 System.out.println("Genre = " + result.getString("g.name"));
                 System.out.println("Star Name = " + result.getString("s.name"));
+                System.out.println("Star Id = " + result.getString("s.id"));
                 System.out.println("Name = " + result.getString("rating"));
                 System.out.println();
             }
