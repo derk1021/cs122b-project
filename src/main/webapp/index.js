@@ -4,29 +4,29 @@ function handleStarResult(resultData) {
     // Populate the star table
     // Find the empty table body by id "star_table_body"
     let starTableBodyElement = jQuery("#star_table_body");
-    let rowHTML = "<tr>";
-    rowHTML = "<th>Hello</th>";
-    rowHTML = "<th>World</th>";
-    rowHTML += "</tr>";
+    let rowHTML = "";
+    rowHTML += "<tr>";
+    rowHTML += "<th>HELLO WORLD</th>";
+    rowHTML += "<tr>";
+    // // Iterate through resultData, no more than 10 entries
+    // for (let i = 0; i < Math.min(10, resultData.length); i++) {
+    //
+    //     // Concatenate the html tags with resultData jsonObject
+    //     let rowHTML = "";
+    //     rowHTML += "<tr>";
+    //     rowHTML +=
+    //         "<th>" +
+    //         // Add a link to single-star.html with id passed with GET url parameter
+    //         resultData[i]['movie_title']// display star_name for the link text
+    //         "</th>";
+    //     rowHTML += "<th>" + resultData[i]["movie_year"] + "</th>";
+    //     rowHTML += "<th>" + resultData[i]["movie_director"] + "</th>";
+    //     rowHTML += "</tr>";
+    //
+    //     // Append the row created to the table body, which will refresh the page
+    //     starTableBodyElement.append(rowHTML);
+    // }
     starTableBodyElement.append(rowHTML);
-    // Iterate through resultData, no more than 10 entries
-    for (let i = 0; i < Math.min(10, resultData.length); i++) {
-
-        // Concatenate the html tags with resultData jsonObject
-        let rowHTML = "";
-        rowHTML += "<tr>";
-        rowHTML +=
-            "<th>" +
-            // Add a link to single-star.html with id passed with GET url parameter
-            resultData[i]['movie_title']// display star_name for the link text
-            "</th>";
-        rowHTML += "<th>" + resultData[i]["movie_year"] + "</th>";
-        rowHTML += "<th>" + resultData[i]["movie_director"] + "</th>";
-        rowHTML += "</tr>";
-
-        // Append the row created to the table body, which will refresh the page
-        starTableBodyElement.append(rowHTML);
-    }
 }
 
 

@@ -16,6 +16,7 @@ import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.sql.*;
 
 
 // Declaring a WebServlet called StarsServlet, which maps to url "/api/stars"
@@ -24,26 +25,29 @@ public class StarsServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     // Create a dataSource which registered in web.
-    private DataSource dataSource;
-
-    public void init(ServletConfig config) {
-        try {
-            dataSource = (DataSource) new InitialContext().lookup("java:comp/env/jdbc/moviedb");
-        } catch (NamingException e) {
-            e.printStackTrace();
-        }
-    }
+//    private DataSource dataSource;
+//
+//    public void init(ServletConfig config) {
+//        try {
+//            dataSource = (DataSource) new InitialContext().lookup("java:comp/env/jdbc/moviedb");
+//        } catch (NamingException e) {
+//            e.printStackTrace();
+//        }
+//    }
 
     /**
      * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-
+        String loginUser = "";
+        String loginPasswd = "";
+        String loginUrl = "jdbc:mysql://localhost:3306/moviedb";
         response.setContentType("application/json"); // Response mime type
 
         // Output stream to STDOUT
         PrintWriter out = response.getWriter();
 
+        Class.forName("com.mysql.jdbc.Driver");
         // Get a connection from dataSource and let resource manager close the connection after usage.
         try (Connection conn = dataSource.getConnection()) {
 

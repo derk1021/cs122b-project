@@ -7,7 +7,7 @@
         <welcome-file>index.html</welcome-file>
     </welcome-file-list>
     <resource-ref>
-        <description>MySQL DataSource example</description>
+        <description>MySQL DataSource</description>
         <res-ref-name>jdbc/moviedb</res-ref-name>
         <res-type>javax.sql.DataSource</res-type>
         <res-auth>Container</res-auth>
