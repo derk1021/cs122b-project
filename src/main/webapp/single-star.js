@@ -45,8 +45,14 @@ function handleResult(resultData) {
     let starInfoElement = jQuery("#star_info");
 
     // append two html <p> created to the h3 body, which will refresh the page
-    starInfoElement.append("<p>Star Name: " + resultData[0]["star_name"] + "</p>" +
-        "<p>Date Of Birth: " + resultData[0]["star_dob"] + "</p>");
+    starInfoElement.append("<p>Star Name: " + resultData[0]["star_name"] + "</p>");
+    console.log(resultData[0]["star_dob"]);
+    if (resultData[0]["star_dob"] == null) {
+        starInfoElement.append("<p>Year Of Birth: N/A</p>");
+    }
+    else{
+        starInfoElement.append("<p>Year Of Birth: " + resultData[0]["star_dob"] + "</p>");
+    }
 
     console.log("handleResult: populating movie table from resultData");
 
@@ -58,8 +64,9 @@ function handleResult(resultData) {
     for (let i = 0; i < resultData.length; i++) {
         let rowHTML = "";
         rowHTML += "<tr>";
-        rowHTML += "<th>" + '<a href="single-movie.html?id=' + resultData[i]['movie_id'] + '">'
-            + resultData[i]["movie_name"] +     // display star_name for the link text
+        rowHTML += "<th>"
+            + '<a href="single-movie.html?id=' + resultData[i]['movie_id'] + '">'
+            + resultData[i]["movie_title"] +     // display star_name for the link text
             '</a>' + "</th>"
         rowHTML += "</tr>";
 
@@ -74,6 +81,8 @@ function handleResult(resultData) {
 
 // Get id from URL
 let starId = getParameterByName('id');
+console.log(starId);
+
 
 // Makes the HTTP GET request and registers on success callback function handleResult
 jQuery.ajax({

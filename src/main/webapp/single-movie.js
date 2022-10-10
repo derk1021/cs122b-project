@@ -72,8 +72,13 @@ function handleResult(resultData) {
         genreTableBodyElement.append(rowHTML);
     }
 
+    const stars = new Set();
     // Concatenate the html tags with resultData jsonObject to create table rows
     for (let i = 0; i < resultData.length; i++) {
+        if (genres.has(resultData[i]["star_id"])) {
+            continue;
+        }
+        genres.add(resultData[i]["star_id"])
         let rowHTML = "";
         rowHTML += "<tr>";
         rowHTML += "<th>" + '<a href="single-star.html?id=' + resultData[i]['star_id'] + '">'
