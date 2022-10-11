@@ -6,7 +6,7 @@ Demo url:
 To deploy the application:
 1. Make sure the application context is set to '/'
 2. When launching the server, make sure the url is set to the root url
-3. Set the artifact in the deployment section as the war file
+3. Run mvn clean package and move built war into the tomcat/webapps
 4. Launch the server
 
 Member's contribution
