@@ -12,4 +12,4 @@ To deploy the application:
 Member's contribution
 Kei Asakawa - Accomplished all coding
 
-Derek Lam - Helped contribute ideas
+Derek Lam - Did nothing
