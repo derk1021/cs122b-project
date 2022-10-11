@@ -1,6 +1,7 @@
 # cs122b-fall-team-38
 
 Demo url:
+https://youtu.be/DcDKezIP8GA
 
 
 To deploy the application:
@@ -12,4 +13,4 @@ To deploy the application:
 Member's contribution
 Kei Asakawa - Accomplished all coding
 
-Derek Lam - Did nothing
+Derek Lam - Provided input
