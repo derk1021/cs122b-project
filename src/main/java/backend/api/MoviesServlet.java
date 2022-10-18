@@ -44,9 +44,7 @@ public class MoviesServlet extends HttpServlet {
         // Output stream to STDOUT
         PrintWriter out = response.getWriter();
         // Get a connection from dataSource and let resource manager close the connection after usage.
-        System.out.println("Enter");
         try (Connection conn = dataSource.getConnection()) {
-            System.out.println("Enter");
             // Declare our statement
             Statement statement = conn.createStatement();
 

@@ -4,7 +4,7 @@
          version="3.1">
     <display-name>cs122b-star-servlet</display-name>
     <welcome-file-list>
-        <welcome-file>index.html</welcome-file>
+        <welcome-file>top-movies.html</welcome-file>
     </welcome-file-list>
     <resource-ref>
         <description>MySQL DataSource</description>
