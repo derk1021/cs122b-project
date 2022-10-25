@@ -1,4 +1,4 @@
-# Start_Fabflix-Assignment
+# cs122b-fall-team-38
 
 The Team number of ths assignment is cs122b-fall team 38
 Setup AWS, MySQL, JDBC, Tomcat, Start Fabflix
