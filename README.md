@@ -1,16 +1,8 @@
-# cs122b-fall-team-38
+# Start_Fabflix-Assignment
 
-Demo url:
-https://youtu.be/DcDKezIP8GA
-
-
-To deploy the application:
-1. Make sure the application context is set to '/'
-2. When launching the server, make sure the url is set to the root url
-3. Run mvn clean package and move built war into the tomcat/webapps
-4. Launch the server
-
-Member's contribution
-Kei Asakawa - Accomplished all coding
-
-Derek Lam - Provided input
+The Team number of ths assignment is cs122b-fall team 38
+Setup AWS, MySQL, JDBC, Tomcat, Start Fabflix
+The Projects Contains Link Project 1 and Project 2
+Here are the Links:
+Project 1: https://youtu.be/4h4_VF9epUQ
+Project 2: https://youtu.be/7PqNQ-MBd_g 
