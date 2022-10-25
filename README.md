@@ -12,6 +12,8 @@ Instructions for deployment: \
 Demo 2 link: https://youtu.be/7PqNQ-MBd_g 
 
 Deployment:\
+Project 1:\
 FabFlix is an eCommerce platform designed using the full stack web application where a user can browse for the movies and make a purchase for a Movie when needed. The design is supported user authentication and a reCaptcha. We hosted FabFlix on a single AWS EC2 instance which was running on an Ubunti Linux Operating system. We also made use of the Master and Slave MySQL setup to host the two instances. Its also important to that, the first instance we used the Apache Load Blancer whicu was handling both the incoming traffic and the redirecting it to the other two instances. This was designed to ease the load in case there was a high traffic. 
+Project 2:\
 The other step for deployment was deploying it using the TomCAT platform. You will grab the WAR File which was generated and deploy it using the TomCat web manager. This can also be done manually by placing the WAR file into the TOMCAT webapps directory. From here you can also run the application. 
 
