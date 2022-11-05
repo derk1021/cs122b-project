@@ -1,12 +1,26 @@
-<div class="container mt-5">
+<div class="container-fluid bg-img">
   <div class="row">
-    <div class="col-md-6 offset-md-2">
-      <h2>Please Login/ Register to Continue!!</h2>
+    <div class="col-md-4 offset-md-4">
+      <h2 class="mt-5 text-center">Please Login/ Register to Continue!!</h2>
       <div class="card mt-3">
         <div class="card-body">
-          <h3 class="card-title text-center">Login</h3>
-          <div class="card-text">
-            <form>
+          <div class="d-flex">
+            <h3 class="card-title text-center m-auto" (click)="tablogin()">
+              <a href="#" [ngStyle]="{ color: istablogin ? 'blue' : 'grey' }">
+                Login</a
+              >
+            </h3>
+            <h3 class="card-title text-center m-auto" (click)="tabregister()">
+              <a
+                href="#"
+                [ngStyle]="{ color: istabregister ? 'blue' : 'grey' }"
+              >
+                Register</a
+              >
+            </h3>
+          </div>
+          <div class="card-text mt-4" *ngIf="istablogin">
+            <form (ngSubmit)="login()">
               <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label"
                   >Email address</label
@@ -16,6 +30,9 @@
                   class="form-control"
                   id="exampleInputEmail1"
                   aria-describedby="emailHelp"
+                  name="email"
+                  [(ngModel)]="loginData.email"
+                  required
                 />
                 <div id="emailHelp" class="form-text">
                   We'll never share your email with anyone else.
@@ -29,19 +46,86 @@
                   type="password"
                   class="form-control"
                   id="exampleInputPassword1"
+                  name="password"
+                  [(ngModel)]="loginData.password"
+                  required
                 />
               </div>
-              <div class="mb-3 form-check">
-                <input
-                  type="checkbox"
-                  class="form-check-input"
-                  id="exampleCheck1"
-                />
-                <label class="form-check-label" for="exampleCheck1"
-                  >Check me out</label
+              <div class="text-center">
+                <button type="submit" class="btn btn-primary">Login</button>
+              </div>
+            </form>
+          </div>
+          <div class="card-text" *ngIf="istabregister">
+            {{ registerData | json }}
+            <form (ngSubmit)="register()">
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label"
+                  >First Name</label
                 >
+                <input
+                  [(ngModel)]="registerData.firstName"
+                  name="firstName"
+                  type="text"
+                  class="form-control"
+                  required
+                />
               </div>
-              <button type="submit" class="btn btn-primary">Login</button>
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label"
+                  >Last Name</label
+                >
+                <input
+                  [(ngModel)]="registerData.lastName"
+                  name="lastName"
+                  type="text"
+                  class="form-control"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label"
+                  >Email address</label
+                >
+                <input
+                  type="email"
+                  class="form-control"
+                  id="exampleInputEmail1"
+                  aria-describedby="emailHelp"
+                  [(ngModel)]="registerData.email"
+                  name="email"
+                />
+                <div id="emailHelp" class="form-text">
+                  We'll never share your email with anyone else.
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label"
+                  >Password</label
+                >
+                <input
+                  type="password"
+                  class="form-control"
+                  id="exampleInputPassword1"
+                  name="password"
+                  [(ngModel)]="loginData.password"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <label for="exampleFormControlTextarea1" class="form-label"
+                  >Address</label
+                >
+                <textarea
+                  class="form-control"
+                  id="exampleFormControlTextarea1"
+                  rows="3"
+                  [(ngModel)]="registerData.address"
+                  name="address"
+                ></textarea>
+              </div>
+              <div class="text-center">
+                <button type="submit" class="btn btn-primary">Register</button>
+              </div>
             </form>
           </div>
         </div>

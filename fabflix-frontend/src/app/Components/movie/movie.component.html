@@ -1,1 +1,69 @@
-<p>movie works!</p>
+<div class="container-fluid bg-img">
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <h1 class="text-center mt-5 text-white">Top 20 Rated Movies</h1>
+      <div class="card mb-5">
+        <div class="card-body">
+          <!-- <h5 class="card-title">Card title</h5> -->
+          <div class="card-text">
+            <table class="table table-responsive">
+              <thead>
+                <tr>
+                  <th scope="col">Title</th>
+                  <th scope="col">Year</th>
+                  <th scope="col">Director</th>
+                  <th scope="col">Genres</th>
+                  <th scope="col">Stars</th>
+                  <th scope="col">Rating</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let movie of topRatedMovies">
+                  <th scope="row">
+                    <a
+                      href="#"
+                      [routerLink]="['/movie/detail/', movie.id]"
+                      style="color: black"
+                      >{{ movie.title }}</a
+                    >
+                  </th>
+                  <td>
+                    {{ movie.year }}
+                  </td>
+                  <td>{{ movie.director }}</td>
+                  <td>
+                    <ul class="mb-1">
+                      <li *ngIf="movie.genres[0]">
+                        <a>{{ movie.genres[0].name }}</a>
+                      </li>
+                      <li *ngIf="movie.genres[1]">
+                        <a>{{ movie.genres[1].name }}</a>
+                      </li>
+                      <li *ngIf="movie.genres[2]">
+                        <a>{{ movie.genres[2].name }}</a>
+                      </li>
+                    </ul>
+                  </td>
+                  <td>
+                    <ul class="mb-1">
+                      <li *ngIf="movie.stars[0]">
+                        <a>{{ movie.stars[0].name }}</a>
+                      </li>
+                      <li *ngIf="movie.stars[1]">
+                        <a>{{ movie.stars[1].name }}</a>
+                      </li>
+                      <li *ngIf="movie.stars[2]">
+                        <a>{{ movie.stars[2].name }}</a>
+                      </li>
+                    </ul>
+                  </td>
+                  <td>{{ movie.rating }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

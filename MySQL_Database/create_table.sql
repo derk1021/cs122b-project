@@ -12,14 +12,12 @@ CREATE TABLE movies (
 CREATE TABLE stars (
     id VARCHAR(10) DEFAULT '' NOT NULL PRIMARY KEY,
     name VARCHAR(100) DEFAULT '' NOT NULL,
-    birthYear INTEGER
+    birth_year INTEGER
 );
 
 CREATE TABLE stars_in_movies(
-    starId VARCHAR(10) DEFAULT '' NOT NULL,
-    movieId VARCHAR(10) DEFAULT '' NOT NULL,
-    FOREIGN KEY (starId) REFERENCES stars(id),
-    FOREIGN KEY (movieId) REFERENCES movies(id)
+    star_id VARCHAR(10) DEFAULT '' NOT NULL,
+    movie_id VARCHAR(10) DEFAULT '' NOT NULL
 );
 
 CREATE TABLE genres(
@@ -28,42 +26,36 @@ CREATE TABLE genres(
 );
 
 CREATE TABLE genres_in_movies(
-    genreId INTEGER NOT NULL,
-    movieId VARCHAR(10) DEFAULT ''  NOT NULL,
-    FOREIGN KEY (genreId) REFERENCES genres(id),
-    FOREIGN KEY (movieId) REFERENCES movies(id)
+    genre_id INTEGER NOT NULL,
+    movie_id VARCHAR(10) DEFAULT ''  NOT NULL
 );
 
 CREATE TABLE creditcards(
     id VARCHAR(20) DEFAULT '' NOT NULL PRIMARY KEY,
-    firstName VARCHAR(50) DEFAULT '' NOT NULL,
-    lastName VARCHAR(50) DEFAULT '' NOT NULL,
+    first_name VARCHAR(50) DEFAULT '' NOT NULL,
+    last_name VARCHAR(50) DEFAULT '' NOT NULL,
     expiration DATE NOT NULL
 );
 
 CREATE TABLE customers(
     id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    firstName VARCHAR(50) DEFAULT '' NOT NULL,
-    lastName VARCHAR(50) DEFAULT '' NOT NULL,
-    ccId VARCHAR(20) DEFAULT '' NOT NULL,
+    first_name VARCHAR(50) DEFAULT '' NOT NULL,
+    last_name VARCHAR(50) DEFAULT '' NOT NULL,
+    cc_id VARCHAR(20) DEFAULT '' NOT NULL,
     address VARCHAR(200) DEFAULT '' NOT NULL,
     email VARCHAR(50) DEFAULT '' NOT NULL,
-    password VARCHAR(20) DEFAULT '' NOT NULL,
-    FOREIGN KEY (ccId) REFERENCES creditcards(id)
+    password VARCHAR(20) DEFAULT '' NOT NULL
 );
 
 CREATE TABLE sales(
     id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    customerId INTEGER NOT NULL,
-    movieId VARCHAR(10) DEFAULT '' NOT NULL, 
-    saleDate DATE NOT NULL,
-    FOREIGN KEY (customerId) REFERENCES customers(id),
-    FOREIGN KEY (movieId) REFERENCES movies(id)
+    customer_id INTEGER NOT NULL,
+    movie_id VARCHAR(10) DEFAULT '' NOT NULL, 
+    saleDate DATE NOT NULL
 );
 
 CREATE TABLE ratings(
-    movieId VARCHAR(10) DEFAULT '' NOT NULL,
+    movie_d VARCHAR(10) DEFAULT '' NOT NULL,
     rating FLOAT,
-    numVotes INTEGER,
-    FOREIGN KEY (movieId) REFERENCES movies(id)
+    num_votes INTEGER
 );
