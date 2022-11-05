@@ -3,6 +3,7 @@ package com.fabflix.entity;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
@@ -11,6 +12,8 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.Data;
 
@@ -44,7 +47,8 @@ public class Movie {
 	@JoinTable(name = "genres_in_movies", joinColumns = @JoinColumn(name = "movie_id"), inverseJoinColumns = @JoinColumn(name = "genre_id"))
 	private List<Genres> genres;
 
-	@ManyToMany
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JsonManagedReference
 	@JoinTable(name = "stars_in_movies", joinColumns = @JoinColumn(name = "movie_id"), inverseJoinColumns = @JoinColumn(name = "star_id"))
 	private List<Stars> stars;
 }

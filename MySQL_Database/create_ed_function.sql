@@ -1,5 +1,0 @@
-use moviedb;
-
-DROP FUNCTION IF EXISTS ed;
-CREATE FUNCTION ed RETURNS INTEGER SONAME 'libed.so';
-

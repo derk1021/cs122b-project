@@ -1,1 +1,33 @@
-<p>star-detail works!</p>
+<app-navbar></app-navbar>
+<div class="container-fluid bg-img">
+  <div class="row">
+    <div class="col-md-4 offset-md-4">
+      <div class="card movie-card mt-5">
+        <div class="card-body text-center">
+          <h1 class="card-title">{{ starDetails.name }}</h1>
+          <h3 class="card-title">
+            Year Of Birth :
+            {{ starDetails.birthYear != 0 ? starDetails.birthYear : "N/A" }}
+          </h3>
+          <div class="card-text">
+            Movies
+            <ul *ngFor="let movie of movies">
+              <li>
+                <a href="#" [routerLink]="['/movie/detail/', movie.id]">{{
+                  movie.title
+                }}</a>
+              </li>
+            </ul>
+          </div>
+          <a
+            href="#"
+            routerLink="/movie"
+            class="btn"
+            style="background: rgb(3, 40, 53); color: white"
+            >MovieList</a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

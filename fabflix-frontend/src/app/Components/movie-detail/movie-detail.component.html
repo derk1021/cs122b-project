@@ -28,7 +28,10 @@
                   <th scope="row">Stars</th>
                   <td>
                     <div *ngFor="let star of movieDetails.stars">
-                      <a href="#" routerLink="" style="color: black"
+                      <a
+                        href="#"
+                        [routerLink]="['/star/detail/', star.id]"
+                        style="color: black"
                         >{{ star.name }}
                       </a>
                     </div>

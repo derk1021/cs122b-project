@@ -48,13 +48,25 @@
                   <td>
                     <ul class="mb-1">
                       <li *ngIf="movie.stars[0]">
-                        <a>{{ movie.stars[0].name }}</a>
+                        <a
+                          class="text-dark"
+                          [routerLink]="['/star/detail/', movie.stars[0].id]"
+                          >{{ movie.stars[0].name }}</a
+                        >
                       </li>
                       <li *ngIf="movie.stars[1]">
-                        <a>{{ movie.stars[1].name }}</a>
+                        <a
+                          class="text-dark"
+                          [routerLink]="['/star/detail/', movie.stars[0].id]"
+                          >{{ movie.stars[1].name }}</a
+                        >
                       </li>
                       <li *ngIf="movie.stars[2]">
-                        <a>{{ movie.stars[2].name }}</a>
+                        <a
+                          class="text-dark"
+                          [routerLink]="['/star/detail/', movie.stars[0].id]"
+                          >{{ movie.stars[2].name }}</a
+                        >
                       </li>
                     </ul>
                   </td>

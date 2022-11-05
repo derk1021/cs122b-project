@@ -17,7 +17,9 @@ CREATE TABLE stars (
 
 CREATE TABLE stars_in_movies(
     star_id VARCHAR(10) DEFAULT '' NOT NULL,
-    movie_id VARCHAR(10) DEFAULT '' NOT NULL
+    movie_id VARCHAR(10) DEFAULT '' NOT NULL,
+    FOREIGN KEY (star_id) REFERENCES stars(id),
+    FOREIGN KEY (movie_id) REFERENCES movies(id)
 );
 
 CREATE TABLE genres(
@@ -27,7 +29,9 @@ CREATE TABLE genres(
 
 CREATE TABLE genres_in_movies(
     genre_id INTEGER NOT NULL,
-    movie_id VARCHAR(10) DEFAULT ''  NOT NULL
+    movie_id VARCHAR(10) DEFAULT ''  NOT NULL,
+    FOREIGN KEY (genre_id) REFERENCES genres(id),
+    FOREIGN KEY (movie_id) REFERENCES movies(id)
 );
 
 CREATE TABLE creditcards(
@@ -44,18 +48,23 @@ CREATE TABLE customers(
     cc_id VARCHAR(20) DEFAULT '' NOT NULL,
     address VARCHAR(200) DEFAULT '' NOT NULL,
     email VARCHAR(50) DEFAULT '' NOT NULL,
-    password VARCHAR(20) DEFAULT '' NOT NULL
+    password VARCHAR(20) DEFAULT '' NOT NULL,
+    FOREIGN KEY (cc_id) REFERENCES creditcards(id)
 );
 
 CREATE TABLE sales(
     id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
     customer_id INTEGER NOT NULL,
     movie_id VARCHAR(10) DEFAULT '' NOT NULL, 
-    saleDate DATE NOT NULL
+    sale_date DATE NOT NULL,
+    FOREIGN KEY (customer_id) REFERENCES customers(id),
+    FOREIGN KEY (movie_id) REFERENCES movies(id)
 );
 
 CREATE TABLE ratings(
-    movie_d VARCHAR(10) DEFAULT '' NOT NULL,
+    movie_id VARCHAR(10) DEFAULT '' NOT NULL,
     rating FLOAT,
-    num_votes INTEGER
+    num_votes INTEGER,
+    FOREIGN KEY (movie_id) REFERENCES movies(id)
+    FOREIGN KEY (movie_id) REFERENCES movies(id)
 );
