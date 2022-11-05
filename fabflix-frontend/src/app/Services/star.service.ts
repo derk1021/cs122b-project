@@ -8,7 +8,8 @@ import { Star } from '../Model/star.model';
 })
 export class StarService {
   // private baseUrl = '  http://localhost:8080/api';
-  private baseUrl = '  http://43.206.8.34:8080/backend/api';
+  private baseUrl =
+    'http://ec2-43-206-8-34.ap-northeast-1.compute.amazonaws.com:9090/api';
 
   constructor(private http: HttpClient) {}
 

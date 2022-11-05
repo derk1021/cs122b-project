@@ -11,7 +11,7 @@
 	<groupId>com.fabflix</groupId>
 	<artifactId>backend</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 	<name>FabFlixBackend</name>
 	<properties>
 		<java.version>11</java.version>
@@ -58,7 +58,8 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
-					<finalName>Backend</finalName>
+				<executable>true</executable>
+					<finalName>backend</finalName>
 					<excludes>
 						<exclude>
 							<groupId>org.projectlombok</groupId>
