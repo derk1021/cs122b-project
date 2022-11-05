@@ -18,6 +18,5 @@ export class MovieComponent implements OnInit {
     this.movieService
       .findTopRatedMovies()
       .subscribe((res: Movie[]) => (this.topRatedMovies = res));
-    console.log('derk');
   }
 }
