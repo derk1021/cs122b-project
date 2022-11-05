@@ -7,7 +7,9 @@ import { Movie } from '../Model/movie.model';
   providedIn: 'root',
 })
 export class MovieService {
-  private baseUrl = '  http://localhost:8080/api';
+  // private baseUrl = '  http://localhost:8080/api';
+  private baseUrl = '  http://43.206.8.34:8080/backend/api';
+
   constructor(private http: HttpClient) {}
 
   findTopRatedMovies() {

@@ -7,8 +7,8 @@ import { Customer } from '../Model/customer.model';
   providedIn: 'root',
 })
 export class LoginService {
-  private baseUrl = '  http://localhost:8080/api';
-
+  // private baseUrl = '  http://localhost:8080/api';
+  private baseUrl = '  http://43.206.8.34:8080/backend/api';
   constructor(private http: HttpClient) {}
   login(login: Login) {
     console.log(login);
