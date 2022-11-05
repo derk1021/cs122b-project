@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import javax.persistence.EntityNotFoundException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -39,6 +41,21 @@ public class MovieServiceImpl implements MovieService {
 			}
 		}
 		return movies;
+	}
+
+	@Override
+	public Movie getMovieDetails(String movieId) {
+		Optional<Movie> movie = movieRepository.findById(movieId);
+		if (movie.isEmpty()) {
+			throw new EntityNotFoundException("Movie Not Found");
+		}
+		Movie result = movie.get();
+		Optional<Ratings> rating = ratingRepository.findById(result.getId());
+		if (rating.isPresent()) {
+			result.setRating(rating.get().getRating());
+		}
+
+		return result;
 	}
 
 }

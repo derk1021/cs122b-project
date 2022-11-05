@@ -9,9 +9,11 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MovieDetailComponent } from './Components/movie-detail/movie-detail.component';
+import { NavbarComponent } from './Components/navbar/navbar.component';
+import { StarDetailComponent } from './Components/star-detail/star-detail.component';
 
 @NgModule({
-  declarations: [AppComponent, MovieComponent, LoginComponent, MovieDetailComponent],
+  declarations: [AppComponent, MovieComponent, LoginComponent, MovieDetailComponent, NavbarComponent, StarDetailComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

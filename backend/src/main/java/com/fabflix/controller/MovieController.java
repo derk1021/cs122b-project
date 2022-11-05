@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.fabflix.entity.Movie;
@@ -21,9 +22,15 @@ public class MovieController {
 	MovieService movieService;
 
 	@GetMapping("/movie")
-	public ResponseEntity<List<Movie>> createUser() {
+	public ResponseEntity<List<Movie>> getTopRatedMovies() {
 
 		return ResponseEntity.ok(movieService.getTopRatedMovies());
+	}
+
+	@GetMapping("/movie/{movieId}")
+	public ResponseEntity<Movie> getMovieDetails(@PathVariable(name = "movieId") String movieId) {
+
+		return ResponseEntity.ok(movieService.getMovieDetails(movieId));
 	}
 
 }

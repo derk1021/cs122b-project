@@ -37,7 +37,7 @@ public class Movie {
 	@NotNull
 	@Size(max = 100)
 	private String director = "";
-
+	
 	private float rating;
 
 	@ManyToMany

@@ -1,1 +1,55 @@
-<div class="container-fluid"></div>
+<app-navbar></app-navbar>
+<div class="container-fluid bg-img">
+  <div class="row">
+    <div class="col-md-4 offset-md-4">
+      <div class="card movie-card mt-5">
+        <div class="card-body text-center">
+          <h1 class="card-title">{{ movieDetails.title }}</h1>
+          <div class="card-text">
+            <table class="table">
+              <tbody>
+                <tr>
+                  <th scope="row">Year</th>
+                  <td>{{ movieDetails.year }}</td>
+                </tr>
+                <tr>
+                  <th scope="row">Director</th>
+                  <td>{{ movieDetails.director }}</td>
+                </tr>
+                <tr>
+                  <th scope="row">Generes</th>
+                  <td>
+                    <div *ngFor="let genre of movieDetails.genres">
+                      {{ genre.name }}
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">Stars</th>
+                  <td>
+                    <div *ngFor="let star of movieDetails.stars">
+                      <a href="#" routerLink="" style="color: black"
+                        >{{ star.name }}
+                      </a>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">Rating</th>
+                  <td>{{ movieDetails.rating }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <a
+            href="#"
+            routerLink="/movie"
+            class="btn"
+            style="background: rgb(3, 40, 53); color: white"
+            >MovieList</a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

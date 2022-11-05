@@ -1,0 +1,12 @@
+.bg-img {
+  width: 100%;
+  height: auto;
+  min-height: 100vh;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.8)),
+    url(src/assets/images/movie-detail-bg.jpg);
+  background-size: cover;
+}
+
+.movie-card {
+  background: rgba(255, 255, 255, 0.726);
+}

@@ -9,7 +9,12 @@ import { Movie } from '../Model/movie.model';
 export class MovieService {
   private baseUrl = '  http://localhost:8080/api';
   constructor(private http: HttpClient) {}
+
   findTopRatedMovies() {
     return this.http.get<Movie[]>(`${this.baseUrl}/movie`);
+  }
+
+  findMovieById(movieId: string) {
+    return this.http.get<Movie>(`${this.baseUrl}/movie/${movieId}`);
   }
 }
