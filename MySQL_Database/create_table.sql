@@ -66,5 +66,4 @@ CREATE TABLE ratings(
     rating FLOAT,
     num_votes INTEGER,
     FOREIGN KEY (movie_id) REFERENCES movies(id)
-    FOREIGN KEY (movie_id) REFERENCES movies(id)
 );
