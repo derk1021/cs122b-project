@@ -57,7 +57,6 @@ public class StarsParser extends DefaultHandler {
 		}
 
         stars = new HashSet<>();
-		connection.close();
     }
 
 	public HashMap<String, String> run()
@@ -66,7 +65,6 @@ public class StarsParser extends DefaultHandler {
         parseDocument();
         writeStarFile();
         printData();
-
 		return starIdMap;
     }
 

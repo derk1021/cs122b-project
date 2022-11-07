@@ -68,7 +68,7 @@ public class CastParser extends DefaultHandler {
 		Iterator<StarsInMovie> it = starInMovies.iterator();
 		while (it.hasNext()) {
 			StarsInMovie s = it.next();
-			writer.printf("%s,%s%s\n", s.getStarId(), s.getMovieId());
+			writer.printf("%s,%s\n", s.getStarId(), s.getMovieId());
 		}
 		writer.close();
 	}
