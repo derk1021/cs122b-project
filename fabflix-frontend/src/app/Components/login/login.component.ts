@@ -1,4 +1,5 @@
 import { Component, NgModule, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Customer } from 'src/app/Model/customer.model';
 import { Login } from 'src/app/Model/login.model';
@@ -10,26 +11,22 @@ import { LoginService } from 'src/app/Services/login.service';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-  istablogin: boolean = true;
-  istabregister: boolean = false;
+
+  token: string|undefined;
 
   loginData: Login = new Login();
-  registerData: Customer = new Customer();
 
   constructor(private loginService: LoginService, private router: Router) {}
 
   ngOnInit(): void {}
 
-  tablogin() {
-    this.istablogin = true;
-    this.istabregister = false;
-  }
-  tabregister() {
-    this.istablogin = false;
-    this.istabregister = true;
-  }
-
-  login() {
+  login(form: NgForm) {
+    if (form.invalid) {
+      for (const control of Object.keys(form.controls)) {
+        form.controls[control].markAsTouched();
+      }
+      return;
+    }
     this.loginService.login(this.loginData).subscribe(
       (res) => {
         localStorage.setItem('user', this.loginData.email);
@@ -40,18 +37,6 @@ export class LoginComponent implements OnInit {
         alert(error.error.errorMessage);
       }
     );
-  }
-
-  register() {
-    this.loginService.register(this.registerData).subscribe(
-      (res) => {
-        alert('You have successfully Registered !! Now you can Login');
-        this.tablogin();
-        console.log('Registered');
-      },
-      (error) => {
-        alert(error.error.errorMessage);
-      }
-    );
+    console.log(`Token [${this.token}] generated`);
   }
 }

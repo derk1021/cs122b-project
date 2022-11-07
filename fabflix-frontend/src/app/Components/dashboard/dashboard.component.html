@@ -10,7 +10,7 @@
             </h3>
           </div>
           <div class="card-text mt-4">
-            <form (ngSubmit)="login()">
+            <form (ngSubmit)="login(form)" #form="ngForm">
               <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label"
                   >Email address</label
@@ -41,6 +41,11 @@
                   required
                 />
               </div>
+              <div class="mb-3">
+                <re-captcha id="recaptcha" name="recaptcha" #recaptcha="ngModel" [(ngModel)]="token" required [class.is-invalid]="recaptcha.invalid && (recaptcha.dirty || recaptcha.touched)"></re-captcha>
+                <div *ngIf="recaptcha.invalid && (recaptcha.dirty || recaptcha.touched)" class="invalid-feedback">
+                <div *ngIf="recaptcha.errors?.['required']">This field is required.</div>
+                </div></div>
               <div class="text-center">
                 <button type="submit" class="btn btn-primary">Login</button>
               </div>

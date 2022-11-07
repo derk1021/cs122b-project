@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Employee } from 'src/app/Model/employee.model';
 import { LoginService } from 'src/app/Services/login.service';
 
@@ -8,7 +9,8 @@ import { LoginService } from 'src/app/Services/login.service';
   styleUrls: ['./dashboard.component.css'],
 })
 export class DashboardComponent implements OnInit {
-  constructor(private loginService: LoginService) {}
+  constructor(private loginService: LoginService) {this.token = undefined;}
+  token: string|undefined;
   loginData: Employee = new Employee();
   isLoggedIn = false;
   addMovieTab = false;
@@ -33,7 +35,13 @@ export class DashboardComponent implements OnInit {
     this.databaseTab = !this.databaseTab;
   }
 
-  login() {
+  login(form:NgForm) {
+    if (form.invalid) {
+      for (const control of Object.keys(form.controls)) {
+        form.controls[control].markAsTouched();
+      }
+      return;
+    }
     this.loginService.loginEmployee(this.loginData).subscribe(
       (res) => {
         localStorage.setItem('employee', this.loginData.email);

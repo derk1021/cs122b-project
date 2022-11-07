@@ -49,7 +49,7 @@ import { TableDescriptionComponent } from './Components/table-description/table-
   providers: [
     {
       provide: RECAPTCHA_SETTINGS,
-      useValue: { siteKey: '<YOUR_KEY>' } as RecaptchaSettings,
+      useValue: { siteKey: '6LeIwOAiAAAAADskWVITh7pT0zuA9L9Sb6_b52CA' } as RecaptchaSettings,
     },
   ],
   bootstrap: [AppComponent],
