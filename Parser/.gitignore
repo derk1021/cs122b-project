@@ -1,8 +1,0 @@
-stanford-movies/*
-.DS_Store
-target/*
-lib/*
-*.iml
-.idea/
-*.txt
-/target/

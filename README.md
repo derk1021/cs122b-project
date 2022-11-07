@@ -14,7 +14,7 @@ The other step for deployment was deploying it using the TomCAT platform. You wi
 Demo 2 link: https://youtu.be/7PqNQ-MBd_g 
 
 Deploy FabFlix (Remotely)
-Git clone repository: git clone https://github.com/derk1021/cs122b-fall-team-38.git
+Git clone repository: git clone https://github.com/uci-jherold2-teaching/cs122b-fall-team-38.git
 
 Change directory into repo: cd cs122b-fall-team-38
 
@@ -41,4 +41,4 @@ We modified two essential processes to make parsing more effective.
 1 : We export the new inserts, such as for stars, genres, movies, stars in movies, and genres in movies, into.txt files so that we can quickly and effectively load them into the sql database. This saves back-and-forth with the db.
 We found that doing this significantly reduced the amount of time we had to spend parsing compared to when we tried single insertion.
 
-2 : We load all the data from SQL Dtabase to Java Memory in a single query.
+2 : We load all the data from SQL Dtabase to Java Memory in a single query.(eg. Loading the all genres as Map)
