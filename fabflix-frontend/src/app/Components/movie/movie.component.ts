@@ -10,6 +10,7 @@ import { MovieService } from 'src/app/Services/movie.service';
 export class MovieComponent implements OnInit {
   constructor(private movieService: MovieService) {}
   topRatedMovies!: Array<Movie>;
+  searchString!:string;
   ngOnInit(): void {
     this.fetchMovies();
   }
@@ -18,5 +19,20 @@ export class MovieComponent implements OnInit {
     this.movieService
       .findTopRatedMovies()
       .subscribe((res: Movie[]) => (this.topRatedMovies = res));
+  }
+
+  findMovieByGenre(){
+    if(this.searchString !='' || this.searchString != undefined){
+    this.movieService.findMovieByGenre(this.searchString).subscribe((res)=>{
+      this.topRatedMovies=res;
+    })
+  }
+  }
+  findMovieByName(){
+    if(this.searchString !='' || this.searchString != undefined){
+    this.movieService.findMovieByName(this.searchString).subscribe((res)=>{
+      this.topRatedMovies=res;
+    })
+  }
   }
 }

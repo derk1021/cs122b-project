@@ -18,4 +18,12 @@ export class MovieService {
   findMovieById(movieId: string) {
     return this.http.get<Movie>(`${this.baseUrl}/movie/${movieId}`);
   }
+
+  findMovieByName(movieName: string) {
+    return this.http.get<Movie[]>(`${this.baseUrl}/movie/title/${movieName}`);
+  }
+
+  findMovieByGenre(genreName: string) {
+    return this.http.get<Movie[]>(`${this.baseUrl}/movie/genre/${genreName}`);
+  }
 }

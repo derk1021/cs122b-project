@@ -15,6 +15,6 @@ export class EmployeeService {
   }
 
   addMovie(addMovie: AddMovie) {
-    return this.http.post(`${this.baseUrl}/database`, addMovie);
+    return this.http.post(`${this.baseUrl}/movie`, addMovie);
   }
 }

@@ -19,7 +19,7 @@ export class AddMovieComponent implements OnInit {
         alert(res);
       },
       (error) => {
-        alert(error.error.erroMessage);
+        alert(error.error.text);
       }
     );
   }
