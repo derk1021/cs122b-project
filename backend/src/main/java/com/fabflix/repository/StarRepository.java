@@ -14,4 +14,6 @@ public interface StarRepository extends JpaRepository<Stars, String> {
 	@Query(value = "select * from movies where id in (select movie_id from stars_in_movies where star_id=?)", nativeQuery = true)
 	List<Map<String, Object>> findMoviesByStarId(String starId);
 
+	@Query(value = "select max(substring(id, 3)) from stars", nativeQuery = true)
+	int findLastId();
 }

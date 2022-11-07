@@ -10,7 +10,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Data;
 
@@ -21,7 +21,7 @@ public class Stars {
 	@Id
 	@NotBlank
 	@NotNull
-	private String Id = "";
+	private String id = "";
 
 	@NotBlank
 	@NotNull
@@ -31,7 +31,7 @@ public class Stars {
 	private int birthYear;
 
 	@ManyToMany(mappedBy = "stars", fetch = FetchType.LAZY)
-	@JsonBackReference
+	@JsonIgnore
 	private List<Movie> movies;
 
 }

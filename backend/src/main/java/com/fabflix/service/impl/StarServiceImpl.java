@@ -29,6 +29,12 @@ public class StarServiceImpl implements StarService {
 	}
 
 	@Override
+	public Stars addStar(Stars star) {
+		star.setId("nm" + starRepository.findLastId() + 1);
+		return starRepository.save(star);
+	}
+
+	@Override
 	public List<Movie> getMovieDetails(String starId) {
 		List<Movie> movies = new ArrayList<>();
 		List<Map<String, Object>> rows = starRepository.findMoviesByStarId(starId);

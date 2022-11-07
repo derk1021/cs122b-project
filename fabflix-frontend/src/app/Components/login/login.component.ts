@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, NgModule, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Customer } from 'src/app/Model/customer.model';
 import { Login } from 'src/app/Model/login.model';

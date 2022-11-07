@@ -1,0 +1,20 @@
+<table class="table bg-light fs-6">
+  <thead>
+    <tr>
+      <th scope="col">Fields</th>
+      <th scope="col">Type</th>
+      <th scope="col">Nullable</th>
+      <th scope="col">Key</th>
+      <th scope="col">Default Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let table of TableData">
+      <td scope="row">{{ table.field }}</td>
+      <td>{{ table.type }}</td>
+      <td>{{ table.nullable }}</td>
+      <td>{{ table.key }}</td>
+      <td>{{ table.defaultValue }}</td>
+    </tr>
+  </tbody>
+</table>

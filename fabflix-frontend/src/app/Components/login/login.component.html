@@ -5,18 +5,23 @@
       <div class="card mt-3">
         <div class="card-body">
           <div class="d-flex">
-            <h3 class="card-title text-center m-auto" (click)="tablogin()">
-              <a href="#" [ngStyle]="{ color: istablogin ? 'blue' : 'grey' }">
-                Login</a
+            <h3 class="card-title text-center m-auto">
+              <button
+                class="btn"
+                (click)="tablogin()"
+                [ngStyle]="{ color: istablogin ? 'blue' : 'grey' }"
               >
+                Login
+              </button>
             </h3>
-            <h3 class="card-title text-center m-auto" (click)="tabregister()">
-              <a
-                href="#"
+            <h3 class="card-title text-center m-auto">
+              <button
+                class="btn"
+                (click)="tabregister()"
                 [ngStyle]="{ color: istabregister ? 'blue' : 'grey' }"
               >
-                Register</a
-              >
+                Register
+              </button>
             </h3>
           </div>
           <div class="card-text mt-4" *ngIf="istablogin">
@@ -57,7 +62,6 @@
             </form>
           </div>
           <div class="card-text" *ngIf="istabregister">
-            {{ registerData | json }}
             <form (ngSubmit)="register()">
               <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label"
@@ -130,6 +134,7 @@
           </div>
         </div>
       </div>
+      <button class="btn" routerLink="_dashboard"> Go To Employee Dashboard</button>
     </div>
   </div>
 </div>

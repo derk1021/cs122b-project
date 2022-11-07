@@ -1,0 +1,73 @@
+<div class="col-md-4 offset-md-4">
+  <div class="card mt-3">
+    <div class="card-body">
+      <h2 class="text-center">Add a new Star</h2>
+      <div class="d-flex"></div>
+      <div class="card-text mt-4">
+        <form (ngSubmit)="addMovie()">
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label"
+              >Movie Title</label
+            >
+            <input
+              type="text"
+              [(ngModel)]="movie.movieTitle"
+              name="movieTitle"
+              class="form-control"
+              required
+            />
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label"
+              >Birth Year</label
+            >
+            <input
+              [(ngModel)]="movie.movieYear"
+              name="movieYear"
+              type="text"
+              class="form-control"
+              id="exampleInputPassword1"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label"
+              >Movie Director</label
+            >
+            <input
+              [(ngModel)]="movie.movieDirector"
+              name="movieDirector"
+              type="text"
+              class="form-control"
+              id="exampleInputPassword1"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label"
+              >Star Name</label
+            >
+            <input
+              [(ngModel)]="movie.starName"
+              name="starName"
+              type="text"
+              class="form-control"
+              id="exampleInputPassword1"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Genre</label>
+            <input
+              [(ngModel)]="movie.genreName"
+              name="genreName"
+              type="text"
+              class="form-control"
+              id="exampleInputPassword1"
+            />
+          </div>
+          <div class="text-center">
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

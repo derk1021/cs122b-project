@@ -22,7 +22,7 @@ public class Genres {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@NotBlank
 	@NotNull
-	private long Id;
+	private long id;
 
 	@NotBlank
 	@NotNull

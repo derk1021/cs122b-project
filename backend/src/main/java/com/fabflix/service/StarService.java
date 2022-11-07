@@ -11,4 +11,6 @@ public interface StarService {
 
 	List<Movie> getMovieDetails(String starId);
 
+	Stars addStar(Stars star);
+
 }

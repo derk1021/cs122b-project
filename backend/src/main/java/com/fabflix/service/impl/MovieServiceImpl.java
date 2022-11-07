@@ -29,6 +29,7 @@ public class MovieServiceImpl implements MovieService {
 
 	@Override
 	public List<Movie> getTopRatedMovies() {
+
 		List<Movie> movies = new ArrayList<>();
 		Page<Ratings> topRated = ratingRepository
 				.findAll(PageRequest.of(0, 20, Sort.by(Sort.Direction.DESC, "rating")));
@@ -37,7 +38,6 @@ public class MovieServiceImpl implements MovieService {
 			if (movie.isPresent()) {
 				movie.get().setRating(i.getRating());
 				movies.add(movie.get());
-//				movieRepository.save(movie.get());
 			}
 		}
 		return movies;

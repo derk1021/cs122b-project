@@ -18,7 +18,7 @@ public class Sales {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@NotBlank
 	@NotNull
-	private long Id;
+	private long id;
 
 //	@NotBlank
 //	@NotNull

@@ -37,6 +37,7 @@ public class CustomerServiceImpl implements CustomerService {
 	@Override
 	public boolean loginCustomer(Login login) throws InvalidCredentialsException {
 		Customer customer = dao.findByEmail(login.getEmail());
+		System.out.println(login);
 		if (customer == null) {
 			throw new EntityNotFoundException("Email Id does not exist. Please Register");
 		}
