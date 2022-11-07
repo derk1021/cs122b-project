@@ -16,7 +16,7 @@ public interface EmployeeRepository extends JpaRepository<Employee, String> {
 	Employee findByEmail(String email);
 
 	@Query(value = " call add_movie(:movieTitle,:movieYear,:movieDirector,:starName,:genreName)", nativeQuery = true)
-	String addMovie(@Param("movieTitle") String movieTitle, @Param("movieYear") int movieYear,
+	Map<String, Object> addMovie(@Param("movieTitle") String movieTitle, @Param("movieYear") int movieYear,
 			@Param("movieDirector") String movieDirector, @Param("starName") String starName,
 			@Param("genreName") String genreName);
 

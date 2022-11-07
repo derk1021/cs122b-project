@@ -197,6 +197,8 @@ public class MovieParser extends DefaultHandler {
 		Connection connection = DriverManager.getConnection(loginUrl, loginUser, loginPasswd);
 
 		PreparedStatement statement = connection.prepareStatement("insert into movies values(?,?,?,?,0)");
+		PreparedStatement statement2 = connection
+				.prepareStatement("select count(*) from movies where title=? and director=? and year=?");
 		PrintWriter writer = new PrintWriter("movies.txt", "UTF-8");
         Iterator<Movie> it = movies.iterator();
         while (it.hasNext()) {
@@ -208,15 +210,22 @@ public class MovieParser extends DefaultHandler {
 			if (m.getDirector() == null) {
 				m.setDirector("");
 			}
-			movieToDbMovie.put(m.getXmlId(), m.getId());
-			writer.printf("%s,%s,%d,%s\n", m.getId(), m.getTitle(), m.getYear(),
-					m.getDirector());
-			
+
+			statement2.setString(1, m.getTitle());
+			statement2.setString(2, m.getDirector());
+			statement2.setInt(3, m.getYear());
+
+			ResultSet r = statement2.executeQuery();
+			r.next();
+			if (Integer.parseInt(r.getString(1)) == 0) {
 			statement.setString(1, m.getId());
 			statement.setString(2, m.getTitle());
 			statement.setInt(3, m.getYear());
 			statement.setString(4, m.getDirector());
-//			statement.executeUpdate();
+			statement.executeUpdate();
+			movieToDbMovie.put(m.getXmlId(), m.getId());
+			writer.printf("%s,%s,%d,%s\n", m.getId(), m.getTitle(), m.getYear(), m.getDirector());
+		}
         }
         writer.close();
 
@@ -232,6 +241,7 @@ public class MovieParser extends DefaultHandler {
 
 		PreparedStatement statement = connection.prepareStatement("insert into genres_in_movies values(?,?)");
 
+
         Iterator<Movie> it = movies.iterator();
         while(it.hasNext()){
             Movie m = it.next();
@@ -241,7 +251,7 @@ public class MovieParser extends DefaultHandler {
 				if (g.getId() != null) {
                 	statement.setInt(1, g.getId());
                 	statement.setString(2, m.getId());
-//					statement.executeUpdate();
+					statement.executeUpdate();
                     writer.printf("%d,%s\n",g.getId(),m.getId());
 				}
                 else{
@@ -290,7 +300,7 @@ public class MovieParser extends DefaultHandler {
                 writer.printf("%s,%s\n", g.getId(), g.getName());
 				statement.setInt(1, g.getId());
 				statement.setString(2, g.getName());
-//				int r = statement.executeUpdate();
+				int r = statement.executeUpdate();
             }
         }
         writer.close();

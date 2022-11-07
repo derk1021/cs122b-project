@@ -1,5 +1,6 @@
 package com.fabflix.repository;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -18,4 +19,8 @@ public interface MovieRepository extends JpaRepository<Movie, String> {
 
 	@Query(value = "select max(substring(id, 3)) from genres", nativeQuery = true)
 	int findLastGenreId();
+
+	List<Movie> findByTitle(String title);
+
+	List<Movie> findByGenresName(String genre);
 }

@@ -44,6 +44,21 @@ public class MovieServiceImpl implements MovieService {
 	}
 
 	@Override
+	public List<Movie> getAllMovies() {
+		return movieRepository.findAll();
+	}
+
+	@Override
+	public List<Movie> findMovieByName(String name) {
+		return movieRepository.findByTitle(name);
+	}
+
+	@Override
+	public List<Movie> findMovieByGenre(String name) {
+		return movieRepository.findByGenresName(name);
+	}
+
+	@Override
 	public Movie getMovieDetails(String movieId) {
 		Optional<Movie> movie = movieRepository.findById(movieId);
 		if (movie.isEmpty()) {

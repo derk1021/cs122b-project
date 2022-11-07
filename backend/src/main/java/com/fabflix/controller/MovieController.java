@@ -33,4 +33,20 @@ public class MovieController {
 		return ResponseEntity.ok(movieService.getMovieDetails(movieId));
 	}
 
+	@GetMapping("/movie/all")
+	public ResponseEntity<List<Movie>> getAllMovies() {
+
+		return ResponseEntity.ok(movieService.getTopRatedMovies());
+	}
+
+	@GetMapping("/movie/title/{name}")
+	public ResponseEntity<List<Movie>> findMovieByName(@PathVariable(name = "name") String name) {
+		return ResponseEntity.ok(movieService.findMovieByName(name));
+	}
+
+	@GetMapping("/movie/genre/{genre}")
+	public ResponseEntity<List<Movie>> findMovieByGenre(@PathVariable(name = "genre") String genre) {
+		return ResponseEntity.ok(movieService.findMovieByGenre(genre));
+	}
+
 }

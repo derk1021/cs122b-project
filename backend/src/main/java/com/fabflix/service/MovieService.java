@@ -10,5 +10,10 @@ public interface MovieService {
 
 	public Movie getMovieDetails(String movieId);
 
+	List<Movie> getAllMovies();
+
+	List<Movie> findMovieByName(String Name);
+
+	public List<Movie> findMovieByGenre(String genre);
 
 }

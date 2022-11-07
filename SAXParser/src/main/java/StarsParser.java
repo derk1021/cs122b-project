@@ -75,6 +75,8 @@ public class StarsParser extends DefaultHandler {
 		Connection connection = DriverManager.getConnection(loginUrl, loginUser, loginPasswd);
 
 		PreparedStatement statement = connection.prepareStatement("insert into star values(?,?,?)");
+		PreparedStatement statement2 = connection
+				.prepareStatement("select count(*) from stars where name=? and birth_year=? ");
         PrintWriter writer = new PrintWriter("stars.txt", "UTF-8");
 
         Iterator<Star> it = stars.iterator();
@@ -84,12 +86,20 @@ public class StarsParser extends DefaultHandler {
 				++initStarId;
 				s.setId("nm" + String.format("%07d", initStarId));
 				starIdMap.put(s.getName(), s.getId());
-            writer.printf("%s,%s%s\n",s.getId(),s.getName(),(s.getYear() == 0 ? "" : ","+s.getYear()));
-			statement.setString(1, s.getId());
-			statement.setString(2, s.getName());
-			statement.setInt(3, s.getYear());
-//			statement.executeUpdate();
-		}
+
+				statement2.setString(1, s.getName());
+				statement2.setInt(2, s.getYear());
+
+				ResultSet r = statement2.executeQuery();
+				r.next();
+				if (Integer.parseInt(r.getString(1)) == 0) {
+					writer.printf("%s,%s%s\n", s.getId(), s.getName(), (s.getYear() == 0 ? "" : "," + s.getYear()));
+					statement.setString(1, s.getId());
+					statement.setString(2, s.getName());
+					statement.setInt(3, s.getYear());
+					statement.executeUpdate();
+				}
+			}
         }
         writer.close();
     }

@@ -75,8 +75,9 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 	@Override
 	public String addMovie(AddMovie movie) {
-		return employeeRepository.addMovie(movie.getMovieTitle(), movie.getMovieYear(), movie.getMovieDirector(),
-				movie.getStarName(), movie.getGenreName());
+		Map<String, Object> result = employeeRepository.addMovie(movie.getMovieTitle(), movie.getMovieYear(),
+				movie.getMovieDirector(), movie.getStarName(), movie.getGenreName());
+		return (String) result.get("message");
 	}
 
 }

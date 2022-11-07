@@ -14,7 +14,7 @@ import com.fabflix.entity.Database;
 import com.fabflix.service.EmployeeService;
 
 @Controller
-@CrossOrigin
+@CrossOrigin("*")
 @RequestMapping("/api")
 public class EmployeeController {
 
