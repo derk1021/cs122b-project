@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.fabflix.entity.Movie;
+import com.fabflix.entity.MovieDto;
 import com.fabflix.service.MovieService;
 
 @Controller
@@ -22,30 +22,30 @@ public class MovieController {
 	MovieService movieService;
 
 	@GetMapping("/movie")
-	public ResponseEntity<List<Movie>> getTopRatedMovies() {
+	public ResponseEntity<List<MovieDto>> getTopRatedMovies() {
 
 		return ResponseEntity.ok(movieService.getTopRatedMovies());
 	}
 
 	@GetMapping("/movie/{movieId}")
-	public ResponseEntity<Movie> getMovieDetails(@PathVariable(name = "movieId") String movieId) {
+	public ResponseEntity<MovieDto> getMovieDetails(@PathVariable(name = "movieId") String movieId) {
 
 		return ResponseEntity.ok(movieService.getMovieDetails(movieId));
 	}
 
 	@GetMapping("/movie/all")
-	public ResponseEntity<List<Movie>> getAllMovies() {
+	public ResponseEntity<List<MovieDto>> getAllMovies() {
 
 		return ResponseEntity.ok(movieService.getTopRatedMovies());
 	}
 
 	@GetMapping("/movie/title/{name}")
-	public ResponseEntity<List<Movie>> findMovieByName(@PathVariable(name = "name") String name) {
+	public ResponseEntity<List<MovieDto>> findMovieByName(@PathVariable(name = "name") String name) {
 		return ResponseEntity.ok(movieService.findMovieByName(name));
 	}
 
 	@GetMapping("/movie/genre/{genre}")
-	public ResponseEntity<List<Movie>> findMovieByGenre(@PathVariable(name = "genre") String genre) {
+	public ResponseEntity<List<MovieDto>> findMovieByGenre(@PathVariable(name = "genre") String genre) {
 		return ResponseEntity.ok(movieService.findMovieByGenre(genre));
 	}
 

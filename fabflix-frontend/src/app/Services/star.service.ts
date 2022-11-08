@@ -21,6 +21,6 @@ export class StarService {
   }
 
   addNewStar(star: Star) {
-    return this.http.post(`${this.baseUrl}/star/`, star);
+    return this.http.post<Star>(`${this.baseUrl}/star`, star);
   }
 }

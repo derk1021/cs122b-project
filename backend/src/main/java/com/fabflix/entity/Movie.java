@@ -40,8 +40,6 @@ public class Movie {
 	@NotNull
 	@Size(max = 100)
 	private String director = "";
-	
-	private float rating = 0;
 
 	@ManyToMany
 	@JoinTable(name = "genres_in_movies", joinColumns = @JoinColumn(name = "movie_id"), inverseJoinColumns = @JoinColumn(name = "genre_id"))

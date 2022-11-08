@@ -9,8 +9,7 @@ import { LoginService } from 'src/app/Services/login.service';
   styleUrls: ['./dashboard.component.css'],
 })
 export class DashboardComponent implements OnInit {
-  constructor(private loginService: LoginService) {this.token = undefined;}
-  token: string|undefined;
+  constructor(private loginService: LoginService) {}
   loginData: Employee = new Employee();
   isLoggedIn = false;
   addMovieTab = false;
@@ -35,13 +34,7 @@ export class DashboardComponent implements OnInit {
     this.databaseTab = !this.databaseTab;
   }
 
-  login(form:NgForm) {
-    if (form.invalid) {
-      for (const control of Object.keys(form.controls)) {
-        form.controls[control].markAsTouched();
-      }
-      return;
-    }
+  login() {
     this.loginService.loginEmployee(this.loginData).subscribe(
       (res) => {
         localStorage.setItem('employee', this.loginData.email);

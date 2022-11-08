@@ -6,11 +6,11 @@
         <div class="card-body">
           <div class="d-flex">
             <h3 class="card-title text-center m-auto">
-              <div>Login</div>
+              <div>Employee Login</div>
             </h3>
           </div>
           <div class="card-text mt-4">
-            <form (ngSubmit)="login(form)" #form="ngForm">
+            <form (ngSubmit)="login()">
               <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label"
                   >Email address</label
@@ -41,11 +41,6 @@
                   required
                 />
               </div>
-              <div class="mb-3">
-                <re-captcha id="recaptcha" name="recaptcha" #recaptcha="ngModel" [(ngModel)]="token" required [class.is-invalid]="recaptcha.invalid && (recaptcha.dirty || recaptcha.touched)"></re-captcha>
-                <div *ngIf="recaptcha.invalid && (recaptcha.dirty || recaptcha.touched)" class="invalid-feedback">
-                <div *ngIf="recaptcha.errors?.['required']">This field is required.</div>
-                </div></div>
               <div class="text-center">
                 <button type="submit" class="btn btn-primary">Login</button>
               </div>
@@ -60,9 +55,11 @@
       <h1 class="text-center mt-5">Welcome to Employee Dashboard</h1>
       <div class="d-flex justify-content-around mx-4">
         <button (click)="showAddMovieTab()" class="btn btn-success">
+          <!-- <button routerLink="/_dashboard/addMovie" class="btn btn-success"> -->
           Add Movie
         </button>
         <button (click)="showAddStarTab()" class="btn btn-success">
+          <!-- <button routerLink="addStar" class="btn btn-success"> -->
           Add Star
         </button>
         <button (click)="showDatabaseTab()" class="btn btn-success">

@@ -15,14 +15,17 @@ export class AddStarComponent implements OnInit {
   ngOnInit(): void {}
 
   addStar() {
-    console.log(this.star);
+    
     this.starService.addNewStar(this.star).subscribe(
       (res) => {
-        alert('New Star Added Successfully');
+        alert(`New Star Added Successfully with Star ID : ${res.id}`);
       },
       (error) => {
-        console.log(error);
-        alert(error.error.errors);
+        if(error.error.errors != null || error.error.errors != undefined){
+          alert(error.error.errors);
+        }else{
+          alert(error.error.message);
+        }
       }
     );
   }
