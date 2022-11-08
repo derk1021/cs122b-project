@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.fabflix.entity.Movie;
 import com.fabflix.entity.Stars;
+import com.fabflix.exception.EntityAlreadyExistsException;
 import com.fabflix.repository.MovieRepository;
 import com.fabflix.repository.StarRepository;
 import com.fabflix.service.StarService;
@@ -29,8 +30,12 @@ public class StarServiceImpl implements StarService {
 	}
 
 	@Override
-	public Stars addStar(Stars star) {
-		star.setId("nm" + starRepository.findLastId() + 1);
+	public Stars addStar(Stars star) throws EntityAlreadyExistsException {
+		Stars findByName = starRepository.findByName(star.getName());
+		if (findByName != null) {
+			throw new EntityAlreadyExistsException("Failure !! Star");
+		}
+		star.setId("nm" + (starRepository.findLastId() + 1));
 		return starRepository.save(star);
 	}
 

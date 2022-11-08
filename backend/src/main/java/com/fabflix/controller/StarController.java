@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.fabflix.entity.Movie;
 import com.fabflix.entity.Stars;
+import com.fabflix.exception.EntityAlreadyExistsException;
 import com.fabflix.service.StarService;
 
 @Controller
@@ -35,7 +36,7 @@ public class StarController {
 	}
 
 	@PostMapping("/star")
-	public ResponseEntity<Stars> addNewStar(@RequestBody Stars star) {
+	public ResponseEntity<Stars> addNewStar(@RequestBody Stars star) throws EntityAlreadyExistsException {
 		return ResponseEntity.ok(starService.addStar(star));
 	}
 }

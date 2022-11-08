@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.fabflix.entity.Movie;
 import com.fabflix.entity.Stars;
+import com.fabflix.exception.EntityAlreadyExistsException;
 
 public interface StarService {
 
@@ -11,6 +12,6 @@ public interface StarService {
 
 	List<Movie> getMovieDetails(String starId);
 
-	Stars addStar(Stars star);
+	Stars addStar(Stars star) throws EntityAlreadyExistsException;
 
 }

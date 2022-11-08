@@ -16,4 +16,6 @@ public interface StarRepository extends JpaRepository<Stars, String> {
 
 	@Query(value = "select max(substring(id, 3)) from stars", nativeQuery = true)
 	int findLastId();
+
+	Stars findByName(String name);
 }
