@@ -53,7 +53,7 @@ public class MovieServiceImpl implements MovieService {
 	@Override
 	public List<MovieDto> findMovieByName(String name) {
 		List<MovieDto> movies = new ArrayList<>();
-		List<Movie> moviesList = movieRepository.findByTitle(name);
+		List<Movie> moviesList = movieRepository.findByTitleStartsWith(name);
 		List<MovieDto> movieDtoList = moviesList.stream().map(m -> modelMapper.map(m, MovieDto.class))
 				.collect(Collectors.toList());
 		for (MovieDto i : movieDtoList) {

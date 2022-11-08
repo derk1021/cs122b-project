@@ -19,7 +19,7 @@ CREATE PROCEDURE add_movie (
         END IF;
         -- generate movie id
         SET @movieId = concat("tt",(select max(substring(id, 3)) from movies) + 1);
-        INSERT INTO movies(id, title, year, director, price) VALUES (@movieId, movieTitle, movieYear, movieDirector, ROUND(RAND()*9 + 1,2));
+        INSERT INTO movies(id, title, year, director) VALUES (@movieId, movieTitle, movieYear, movieDirector);
         
 -- genre
         -- if genre does not exist
