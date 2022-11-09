@@ -52,3 +52,5 @@ We modified two essential processes to make parsing more effective.
 We found that doing this significantly reduced the amount of time we had to spend parsing compared to when we tried single insertion.
 
 2 : We load all the data from SQL Dtabase to Java Memory in a single query.(eg. Loading the all genres as Map)
+  
+Demo 3 Link: https://youtu.be/DYmaoLrQGE8
