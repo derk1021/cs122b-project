@@ -6,3 +6,10 @@ lib/*
 .idea/
 *.txt
 /target/
+
+/.settings/
+.classpath
+.project
+
+
+

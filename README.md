@@ -13,6 +13,16 @@ Instructions for deployment: \
 The other step for deployment was deploying it using the TomCAT platform. You will grab the WAR File which was generated and deploy it using the TomCat web manager. This can also be done manually by placing the WAR file into the TOMCAT webapps directory. From here you can also run the application. \
 Demo 2 link: https://youtu.be/7PqNQ-MBd_g 
 
+Project 3:\
+\
+This Project is about securing the website using Recaptcha and https. Also to protect from sql injection attack use of Prepared Statements is done.\
+The passwords stored in the database are also encrypted using strong password encryptor and is decrypted on login by user.
+To load Bulk Data a SAX Xml Paser is made which can read data and do a bulk insert into the database.
+Demo 3 link: https://youtu.be/DYmaoLrQGE8 
+From here you can also run the application. \
+http://15.206.238.236:8080/FabFlix
+
+Instructions for deployment:\
 Deploy FabFlix (Remotely)
 Git clone repository: git clone https://github.com/uci-jherold2-teaching/cs122b-fall-team-38.git
 
