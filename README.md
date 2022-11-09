@@ -41,7 +41,7 @@ You should now be on the movie list page.
 Project 3 -
 
 Inconsistences
-We have written two files inconsistentGenreInMovies.md and inconsistentGenres.md
+We have written in 3 files [inconsistentGenreInMovies.md](https://github.com/uci-jherold2-teaching/cs122b-fall-team-38/blob/main/SAXParser/inconsistentGenreInMovies.md) , [inconsistentGenres.md](https://github.com/uci-jherold2-teaching/cs122b-fall-team-38/blob/main/SAXParser/inconsistentGenres.md) and [inconsistentYear.md](https://github.com/uci-jherold2-teaching/cs122b-fall-team-38/blob/main/SAXParser/inconsistentYear.md)
 
 We have not written out as talked about in the demo inconsistences in parsing (such as parseInt kind of problems.
 
