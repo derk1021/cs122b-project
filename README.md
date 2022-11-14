@@ -17,7 +17,7 @@ Project 3:\
 \
 This Project is about securing the website using Recaptcha and https. Also to protect from sql injection attack use of Prepared Statements is done.\
 The passwords stored in the database are also encrypted using strong password encryptor and is decrypted on login by user.
-To load Bulk Data a SAX Xml Paser is made which can read data and do a bulk insert into the database.
+To load Bulk Data a SAX Xml Paser is made which can read data and do a bulk insert into the database.\
 Demo 3 link: https://youtu.be/DYmaoLrQGE8 
 From here you can also run the application. \
 http://15.206.238.236:8080/FabFlix
@@ -41,7 +41,7 @@ You should now be on the movie list page.
 Project 3 -
 
 Inconsistences
-We have written two files inconsistentGenreInMovies.md and inconsistentGenres.md
+We have written in 3 files [inconsistentGenreInMovies.md](https://github.com/uci-jherold2-teaching/cs122b-fall-team-38/blob/main/SAXParser/inconsistentGenreInMovies.md) , [inconsistentGenres.md](https://github.com/uci-jherold2-teaching/cs122b-fall-team-38/blob/main/SAXParser/inconsistentGenres.md) and [inconsistentYear.md](https://github.com/uci-jherold2-teaching/cs122b-fall-team-38/blob/main/SAXParser/inconsistentYear.md)
 
 We have not written out as talked about in the demo inconsistences in parsing (such as parseInt kind of problems.
 
@@ -52,3 +52,7 @@ We modified two essential processes to make parsing more effective.
 We found that doing this significantly reduced the amount of time we had to spend parsing compared to when we tried single insertion.
 
 2 : We load all the data from SQL Dtabase to Java Memory in a single query.(eg. Loading the all genres as Map)
+
+Prepared Statements can be found here in the folder [SQL Files](https://github.com/uci-jherold2-teaching/cs122b-fall-team-38/tree/main/SQL%20Files)
+  
+Demo 3 Link: https://youtu.be/DYmaoLrQGE8
