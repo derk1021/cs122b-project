@@ -52,11 +52,14 @@ export class HomeComponent implements OnInit {
         console.log("Getting Data from backend for search : " +this.searchText)
         this.movieService.findMovieByCriteria(this.searchText,0,'null','null').subscribe((res)=>{
         this.filteredList = res.slice(0,10);
+        console.log(res.slice(0,10));
         localStorage.setItem(this.searchText,JSON.stringify(res.slice(0,10)));
+        sessionStorage.setItem('searchResult',JSON.stringify(this.filteredList))
       }) } else{
         console.log("Getting Data from cache for search : " +this.searchText +" Using CacheResult")
         this.filteredList = JSON.parse(cachedResult);
         console.log(JSON.parse(cachedResult));
+        sessionStorage.setItem('searchResult',JSON.stringify(this.filteredList))
       }
     
     }

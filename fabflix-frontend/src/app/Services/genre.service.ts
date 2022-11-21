@@ -16,9 +16,6 @@ export class GenreService {
   findAllGenres() {
     if(!this.genres$){ 
       this.genres$ = this.http.get<Genre[]>(`${this.baseUrl}/genre`).pipe(shareReplay(1))
-      console.log('Returning Genres from backend')
-    }else{
-      console.log('Returning Genres from cache')
     }
     return this.genres$;
   }

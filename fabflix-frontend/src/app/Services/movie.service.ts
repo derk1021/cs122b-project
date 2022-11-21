@@ -8,7 +8,6 @@ import { Movie } from '../Model/movie.model';
 })
 export class MovieService {
   private baseUrl = environment.baseUrl;
-  private movies$!: Observable<Movie[]>;
   constructor(private http: HttpClient) {}
 
   findMovieById(movieId: string) {
@@ -25,15 +24,5 @@ export class MovieService {
 
   findMovieByCriteria(title:string,year:number,director:string,star:string):Observable<Movie[]>{
     return this.http.get<Movie[]>(`${this.baseUrl}/movie?title=${title}&year=${year}&director=${director}&star=${star}`);
-  }
-
-  findAllMovies():Observable<Movie[]>{
-    if(!this.movies$){
-      this.movies$ = this.http.get<Movie[]>(`${this.baseUrl}/movie?title=null&year=0&director=null&star=null`).pipe(shareReplay(1));
-      console.log('Returning Movies from backend')
-    }else{
-      console.log('Returning Movies from cache')
-    }
-    return this.movies$;
   }
 }
