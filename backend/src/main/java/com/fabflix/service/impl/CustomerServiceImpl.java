@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 import com.fabflix.entity.Customer;
 import com.fabflix.entity.Login;
-import com.fabflix.exception.EntityAlreadyExistsException;
 import com.fabflix.exception.InvalidCredentialsException;
 import com.fabflix.repository.CustomerRepository;
 import com.fabflix.service.CustomerService;
@@ -21,18 +20,6 @@ public class CustomerServiceImpl implements CustomerService {
 
 	@Autowired
 	StrongPasswordEncryptor encryptor;
-
-	@Override
-	public Customer registerCustomer(Customer login) throws EntityAlreadyExistsException {
-		Customer existingUser = dao.findByEmail(login.getEmail());
-		if (existingUser != null) {
-			throw new EntityAlreadyExistsException("User");
-		} else {
-			login.setPassword(encryptor.encryptPassword(login.getPassword()));
-			existingUser = dao.save(login);
-		}
-		return existingUser;
-	}
 
 	@Override
 	public boolean loginCustomer(Login login) throws InvalidCredentialsException {
