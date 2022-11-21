@@ -1,2 +1,6 @@
 /.metadata/
 *.pem
+/create_Employee_table.sql
+/create_table.sql
+/customers_encrypted.csv
+/movie-data.sql
