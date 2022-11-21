@@ -1,17 +1,9 @@
 <div class="container-fluid bg-img">
   <div class="row">
-    
-    <div class="col-md-8 offset-md-2">
-      <form class="d-flex me-2 mt-2">
-        <div class="flex-fill"><input class="form-control" type="search" placeholder="Search" [(ngModel)]="searchString" name="searchString" aria-label="Search"></div>
-        <button class="btn btn-outline-success mx-2" type="submit" (click)="findMovieByGenre()">Search (ByGenre)</button>
-        <button class="btn btn-outline-success mx-2" type="submit" (click)="findMovieByName()">Search (By Name)</button>
-
-      </form>
-      <h1 class="text-center mt-5 text-white">Top 20 Rated Movies</h1>
+    <div class="col-md-12 px-5">
+      <h1 class="text-center mt-2 text-white">Movies</h1>
       <div class="card mb-5">
         <div class="card-body">
-          <!-- <h5 class="card-title">Card title</h5> -->
           <div class="card-text">
             <table class="table table-responsive">
               <thead>
@@ -25,7 +17,12 @@
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let movie of topRatedMovies">
+                <tr *ngFor="let movie of topRatedMovies | paginate
+                : {
+                    itemsPerPage: 5,
+                    currentPage: page,
+                    totalItems: totalLength
+                  }">
                   <th scope="row">
                     <a
                       href="#"
@@ -76,13 +73,18 @@
                       </li>
                     </ul>
                   </td>
-                  <td>{{ movie.rating }}</td>
+                  <td>{{ movie.rating == 0 ? "NA" : movie.rating }}</td>
                 </tr>
               </tbody>
             </table>
           </div>
+          <pagination-controls
+            class="text-center controls py-2 bg-white"
+            (pageChange)="page = $event"
+            ></pagination-controls>
         </div>
       </div>
+      
     </div>
   </div>
 </div>

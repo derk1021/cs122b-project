@@ -13,7 +13,6 @@ export class DatabaseComponent implements OnInit {
   ngOnInit(): void {
     this.employeeService.getDatabaseMetadata().subscribe((res) => {
       this.DatabaseMetadata = res;
-      console.log(res);
     });
   }
 }

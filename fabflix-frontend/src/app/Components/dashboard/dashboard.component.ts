@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
 import { Employee } from 'src/app/Model/employee.model';
 import { LoginService } from 'src/app/Services/login.service';
 
@@ -39,7 +38,6 @@ export class DashboardComponent implements OnInit {
       (res) => {
         localStorage.setItem('employee', this.loginData.email);
         this.isLoggedIn = true;
-        console.log('Logged In');
       },
       (error) => {
         alert(error.error.errorMessage);

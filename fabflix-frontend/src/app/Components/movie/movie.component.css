@@ -6,3 +6,8 @@
     url(src/assets/images/movie-background.jpg);
   background-size: cover;
 }
+
+.sidebar{
+  height: auto;
+  min-height: 100vh;
+}

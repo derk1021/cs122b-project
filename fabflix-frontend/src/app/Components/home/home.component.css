@@ -1,0 +1,30 @@
+.bg-img {
+    width: 100%;
+    min-height: 100vh;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.8)),
+      url(src/assets/images/background.jpg);
+    background-size: cover;
+  }
+
+  .combobox-options {
+
+    position: absolute;
+    text-align: center;
+    background-color: white;
+    width: 80%;
+    max-height: 200px;
+    overflow-y: auto;
+    box-shadow: 2px 2px 2px 2px #ccc;
+    z-index: 1;
+  }
+
+  .selected {
+    color: rgb(248, 248, 248);
+    background-color: rgba(100, 96, 96, 0.719);
+  }
+
+  .dropdown-item:hover{
+
+    background-color: grey;
+    color: white;
+  }

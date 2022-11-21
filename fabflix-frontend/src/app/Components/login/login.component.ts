@@ -1,4 +1,4 @@
-import { Component, NgModule, OnInit } from '@angular/core';
+import { Component,OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Login } from 'src/app/Model/login.model';
@@ -30,13 +30,11 @@ export class LoginComponent implements OnInit {
     this.loginService.login(this.loginData).subscribe(
       (res) => {
         localStorage.setItem('user', this.loginData.email);
-        this.router.navigateByUrl('/movie');
-        console.log('Logged In');
+        this.router.navigateByUrl('/home');
       },
       (error) => {
         alert(error.error.errorMessage);
       }
     );
-    console.log(`Token [${this.token}] generated`);
   }
 }

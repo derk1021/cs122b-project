@@ -1,0 +1,81 @@
+<div class="container-fluid bg-img">
+  <div class="row">
+    <div class="col-md-6 offset-md-3 mt-5">
+      <div class="bg-light mb-5">
+        <mat-tab-group>
+          <mat-tab label="Search a Movie">
+            
+            <div class="container py-5">
+              <form class="d-flex">
+                <input
+                  class=" form-control me-2"
+                  type="text"
+                  placeholder="Search"
+                  aria-label="Search"
+                  [(ngModel)]="searchText"
+                  name="searchText"
+                  (ngModelChange)="getFilteredList($event)"
+                  (keyup)="onKeyPress($event)" 
+                />
+                <button class="btn btn-outline-success" (click)="searchMovies()">
+                  Search
+                </button>  
+              </form>
+              <ul *ngIf="!listHidden" class="combobox-options">
+                <li *ngFor="let movie of filteredList;let i = index"  (click)="selectItem(i)" [ngClass]="{'selected': i===selectedIndex}"><a id="search-item" class="dropdown-item"  [routerLink]="['/movie/detail/', movie.id]">{{movie.title}}</a></li>
+              </ul>
+
+              <hr>
+              <form (ngSubmit)="searchByCriteria()">
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">Title</label>
+                  <input type="text" class="form-control" id="exampleInputEmail1" name="title" [(ngModel)]="title">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label" >Year</label>
+                    <input type="number" class="form-control" id="exampleInputEmail1" name="year" [(ngModel)]="year">
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label" >Director</label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" name="director" [(ngModel)]="director">
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Star</label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" name="starName" [(ngModel)]="starName">
+                  </div>
+                  <div class="text-center">
+                    <button class="btn btn-outline-success" type="submit">
+                        Search
+                    </button>
+                  </div>
+              </form>
+            </div>
+          </mat-tab>
+          <mat-tab label="Browse By Genre">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item" *ngFor="let genre of genreList">
+                <a
+                  routerLink="/movie"
+                  [state]="genre"
+                  [queryParams]="{ genre: [genre.name] }"
+                  >{{ genre.name }}</a
+                >
+              </li>
+            </ul>
+          </mat-tab>
+          <mat-tab label="Browse By Title">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item" *ngFor="let title of titleList">
+                <a
+                  routerLink="/movie"
+                  [queryParams]="{ titleStartsWith: [title] }"
+                  >{{ title }}</a
+                >
+              </li>
+            </ul></mat-tab
+          >
+        </mat-tab-group>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,19 +1,15 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable, shareReplay } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { Login } from '../Model/login.model';
 import { Movie } from '../Model/movie.model';
 @Injectable({
   providedIn: 'root',
 })
 export class MovieService {
   private baseUrl = environment.baseUrl;
-
+  private movies$!: Observable<Movie[]>;
   constructor(private http: HttpClient) {}
-
-  findTopRatedMovies() {
-    return this.http.get<Movie[]>(`${this.baseUrl}/movie`);
-  }
 
   findMovieById(movieId: string) {
     return this.http.get<Movie>(`${this.baseUrl}/movie/${movieId}`);
@@ -25,5 +21,19 @@ export class MovieService {
 
   findMovieByGenre(genreName: string) {
     return this.http.get<Movie[]>(`${this.baseUrl}/movie/genre/${genreName}`);
+  }
+
+  findMovieByCriteria(title:string,year:number,director:string,star:string):Observable<Movie[]>{
+    return this.http.get<Movie[]>(`${this.baseUrl}/movie?title=${title}&year=${year}&director=${director}&star=${star}`);
+  }
+
+  findAllMovies():Observable<Movie[]>{
+    if(!this.movies$){
+      this.movies$ = this.http.get<Movie[]>(`${this.baseUrl}/movie?title=null&year=0&director=null&star=null`).pipe(shareReplay(1));
+      console.log('Returning Movies from backend')
+    }else{
+      console.log('Returning Movies from cache')
+    }
+    return this.movies$;
   }
 }

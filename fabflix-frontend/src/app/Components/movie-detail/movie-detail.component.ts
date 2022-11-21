@@ -11,7 +11,7 @@ import { MovieService } from 'src/app/Services/movie.service';
 export class MovieDetailComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
-    private movieService: MovieService
+    private movieService: MovieService,
   ) {}
   movieId = '';
   movieDetails!: Movie;

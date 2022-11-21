@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-md-4 offset-md-4">
       <div class="card movie-card mt-5">
-        <div class="card-body text-center">
+        <div class="card-body text-center" *ngIf="movieDetails">
           <h1 class="card-title">{{ movieDetails.title }}</h1>
           <div class="card-text">
             <table class="table">
@@ -38,7 +38,7 @@
                 </tr>
                 <tr>
                   <th scope="row">Rating</th>
-                  <td>{{ movieDetails.rating }}</td>
+                  <td>{{ movieDetails.rating ==0 ? "NA" :  movieDetails.rating }}</td>
                 </tr>
               </tbody>
             </table>
