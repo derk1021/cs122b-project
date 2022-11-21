@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context=".ui.movielist.MoviePageActivity">
+
+    <TextView
+        android:id="@+id/titleTv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Title"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/yearTv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:text="Year"
+        android:layout_marginTop="8dp"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titleTv" />
+
+    <TextView
+        android:id="@+id/directorTv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:layout_marginTop="8dp"
+        android:text="Director"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/yearTv" />
+
+    <TextView
+        android:id="@+id/genreTv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:layout_marginTop="8dp"
+        android:text="Genres"
+        android:textSize="24sp"
+        app:layout_constraintTop_toBottomOf="@+id/directorTv"
+        tools:layout_editor_absoluteX="16dp" />
+
+    <TextView
+        android:id="@+id/genresTv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="genre1, genre2, genre3"
+        android:textSize="20sp"
+        app:layout_constraintTop_toBottomOf="@+id/genreTv"
+        tools:layout_editor_absoluteX="16dp" />
+
+    <TextView
+        android:id="@+id/starTv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:layout_marginTop="8dp"
+        android:text="Stars"
+        android:textSize="24sp"
+        app:layout_constraintTop_toBottomOf="@+id/genresTv"
+        tools:layout_editor_absoluteX="16dp" />
+
+    <TextView
+        android:id="@+id/starsTv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="star1, star2, star3"
+        android:textSize="20sp"
+        app:layout_constraintTop_toBottomOf="@+id/starTv"
+        tools:layout_editor_absoluteX="16dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
