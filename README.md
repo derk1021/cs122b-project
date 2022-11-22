@@ -20,6 +20,21 @@ The passwords stored in the database are also encrypted using strong password en
 To load Bulk Data a SAX Xml Paser is made which can read data and do a bulk insert into the database.\
 Demo 3 link: https://youtu.be/DYmaoLrQGE8 
 
+Inconsistences
+We have written in 3 files [inconsistentGenreInMovies.md](https://github.com/uci-jherold2-teaching/cs122b-fall-team-38/blob/main/SAXParser/inconsistentGenreInMovies.md) , [inconsistentGenres.md](https://github.com/uci-jherold2-teaching/cs122b-fall-team-38/blob/main/SAXParser/inconsistentGenres.md) and [inconsistentYear.md](https://github.com/uci-jherold2-teaching/cs122b-fall-team-38/blob/main/SAXParser/inconsistentYear.md)
+
+We have not written out as talked about in the demo inconsistences in parsing (such as parseInt kind of problems.
+
+Efficiency
+We modified two essential processes to make parsing more effective.
+
+1 : We export the new inserts, such as for stars, genres, movies, stars in movies, and genres in movies, into.txt files so that we can quickly and effectively load them into the sql database. This saves back-and-forth with the db.
+We found that doing this significantly reduced the amount of time we had to spend parsing compared to when we tried single insertion.
+
+2 : We load all the data from SQL Dtabase to Java Memory in a single query.(eg. Loading the all genres as Map)
+
+Prepared Statements can be found here in the folder [SQL Files](https://github.com/uci-jherold2-teaching/cs122b-fall-team-38/tree/main/SQL%20Files)
+
 Project 4:\
 \
 This Project is about creating autocomplete search anf full text-search on FabFlix website.We have also created an Android app for the FabFlix.\
@@ -43,22 +58,3 @@ Open Tomcat Domain at <your-amazon-instance-domain>:8080
 Go to Manager Apps > Click FabFlix
 
 You should now be on the movie list page.
-
-Project 3 -
-
-Inconsistences
-We have written in 3 files [inconsistentGenreInMovies.md](https://github.com/uci-jherold2-teaching/cs122b-fall-team-38/blob/main/SAXParser/inconsistentGenreInMovies.md) , [inconsistentGenres.md](https://github.com/uci-jherold2-teaching/cs122b-fall-team-38/blob/main/SAXParser/inconsistentGenres.md) and [inconsistentYear.md](https://github.com/uci-jherold2-teaching/cs122b-fall-team-38/blob/main/SAXParser/inconsistentYear.md)
-
-We have not written out as talked about in the demo inconsistences in parsing (such as parseInt kind of problems.
-
-Efficiency
-We modified two essential processes to make parsing more effective.
-
-1 : We export the new inserts, such as for stars, genres, movies, stars in movies, and genres in movies, into.txt files so that we can quickly and effectively load them into the sql database. This saves back-and-forth with the db.
-We found that doing this significantly reduced the amount of time we had to spend parsing compared to when we tried single insertion.
-
-2 : We load all the data from SQL Dtabase to Java Memory in a single query.(eg. Loading the all genres as Map)
-
-Prepared Statements can be found here in the folder [SQL Files](https://github.com/uci-jherold2-teaching/cs122b-fall-team-38/tree/main/SQL%20Files)
-  
-Demo 3 Link: https://youtu.be/DYmaoLrQGE8
