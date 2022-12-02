@@ -1,34 +1,33 @@
 # cs122b-fall-team-38
 - # General
-    ## NOTE : Our img/* folder is [/graphImages](https://github.com/uci-jherold2-teaching/cs122b-fall-team-38/tree/main/graphImages)
-    ##        Out logs/* folder is [/logs](https://github.com/uci-jherold2-teaching/cs122b-fall-team-38/tree/main/logs)
+    - ## Our img/* folder is [/graphImages](https://github.com/uci-jherold2-teaching/cs122b-fall-team-38/tree/main/graphImages)
+    - ## Out logs/* folder is [/logs](https://github.com/uci-jherold2-teaching/cs122b-fall-team-38/tree/main/logs)
 	- #### Team#: 38
-	- ####Contributions: Derek Lam (doing it solo)\
-\
+	- #### Contributions: Derek Lam (doing it solo)
 
 ## Demo Video
-- View our Project 1 Demo Video here: https://youtu.be/4h4_VF9epUQ 
-- View our Project 2 Demo Video here: https://youtu.be/7PqNQ-MBd_g 
-- View our Project 3 Demo Video here: https://youtu.be/DYmaoLrQGE8
-- View our Project 4 Demo Video here: https://youtu.be/3_g7o0DEKRU
+	- View our Project 1 Demo Video here: https://youtu.be/4h4_VF9epUQ 
+	- View our Project 2 Demo Video here: https://youtu.be/7PqNQ-MBd_g 
+	- View our Project 3 Demo Video here: https://youtu.be/DYmaoLrQGE8
+	- View our Project 4 Demo Video here: https://youtu.be/3_g7o0DEKRU
 
 
-- #Project 1: Setup AWS, MySQL, JDBC, Tomcat, Start FabFlix\
-- ####FabFlix is an eCommerce platform designed using the full stack web application where a user can browse for the movies and make a purchase for a Movie when needed.The backend is a spring boot application which is used to create apis. This seperates the frontend from backend making it more efficient. The design is supported user authentication and a reCaptcha. We hosted FabFlix on a single AWS EC2 instance which was running on an Ubuntu Linux Operating system.
+- # Project 1: Setup AWS, MySQL, JDBC, Tomcat, Start FabFlix
+- #### FabFlix is an eCommerce platform designed using the full stack web application where a user can browse for the movies and make a purchase for a Movie when needed.The backend is a spring boot application which is used to create apis. This seperates the frontend from backend making it more efficient. The design is supported user authentication and a reCaptcha. We hosted FabFlix on a single AWS EC2 instance which was running on an Ubuntu Linux Operating system.
 
-- #Project 2: Developing FabFlix Website\
-- ####The other step for deployment was deploying it using the TomCAT platform. You will grab the WAR File which was generated and deploy it using the TomCat web manager. This can also be done manually by placing the WAR file into the TOMCAT webapps directory. From here you can also run the application. \
+- # Project 2: Developing FabFlix Website
+- #### The other step for deployment was deploying it using the TomCAT platform. You will grab the WAR File which was generated and deploy it using the TomCat web manager. This can also be done manually by placing the WAR file into the TOMCAT webapps directory. From here you can also run the application. \
 
-- #Project 3: reCAPTCHA, HTTPS, PreparedStatement, StoredProcedure, XML Parsing \
-- ####This Project is about securing the website using Recaptcha and https. Also to protect from sql injection attack use of Prepared Statements is done.\
+- # Project 3: reCAPTCHA, HTTPS, PreparedStatement, StoredProcedure, XML Parsing 
+- #### This Project is about securing the website using Recaptcha and https. Also to protect from sql injection attack use of Prepared Statements is done.
 The passwords stored in the database are also encrypted using strong password encryptor and is decrypted on login by user.
-To load Bulk Data a SAX Xml Paser is made which can read data and do a bulk insert into the database.\
+To load Bulk Data a SAX Xml Paser is made which can read data and do a bulk insert into the database.
 
 
-- #Project 4: Full Text Search, Autocomplete, Android Application, Fuzzy Search\
-- ####This Project is about creating autocomplete search anf full text-search on FabFlix website.We have also created an Android app for the FabFlix.\
+- # Project 4: Full Text Search, Autocomplete, Android Application, Fuzzy Search
+- #### This Project is about creating autocomplete search anf full text-search on FabFlix website.We have also created an Android app for the FabFlix.\
 
-- #Project 5 : Scaling FabFlix and performance Tuning
+- # Project 5 : Scaling FabFlix and performance Tuning
 - #### In this we made use of the Master and Slave MySQL setup to host the two instances. Then we created another instance which is used asn the Apache Load Blancer which was handling both the incoming traffic and the redirecting it to the other two instances. This was designed to ease the load in case there was a high traffic.We also implemented Connection pooling to speed the the serve time of instances.\
 
 - # Connection Pooling
@@ -86,7 +85,7 @@ Prepared Statements can be found here in the folder [SQL Files](https://github.c
 
 
 
-## Instructions for deployment:\
+## Instructions for deployment:
 Deploy FabFlix (Remotely)
 - Git clone repository: git clone https://github.com/uci-jherold2-teaching/cs122b-fall-team-38.git
 
