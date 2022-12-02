@@ -6,10 +6,12 @@ import java.util.Map;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.fabflix.entity.Stars;
 
 @Repository
+@Transactional(readOnly = true)
 public interface StarRepository extends JpaRepository<Stars, String> {
 	@Query(value = "select * from movies where id in (select movie_id from stars_in_movies where star_id=?)", nativeQuery = true)
 	List<Map<String, Object>> findMoviesByStarId(String starId);

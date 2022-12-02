@@ -7,11 +7,13 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.fabflix.entity.Movie;
 import com.fabflix.entity.Stars;
 
 @Repository
+@Transactional(readOnly = true)
 public interface MovieRepository extends JpaRepository<Movie, String> {
 	Optional<Movie> findByStars(Stars star);
 
