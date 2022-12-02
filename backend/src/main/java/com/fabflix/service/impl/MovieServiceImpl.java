@@ -1,5 +1,9 @@
 package com.fabflix.service.impl;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -15,6 +19,7 @@ import javax.persistence.criteria.Root;
 import org.apache.commons.lang3.StringUtils;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
@@ -36,6 +41,9 @@ public class MovieServiceImpl implements MovieService {
 
 	@Autowired
 	ModelMapper modelMapper;
+
+	@Autowired
+	ApplicationContext context;
 
 	@Override
 	public List<MovieDto> findMovieByName(String name) {
@@ -66,7 +74,11 @@ public class MovieServiceImpl implements MovieService {
 
 	@Override
 	public List<MovieDto> findByCriteria(String title, int year, String director, String starName) {
+		long startTimeTS = System.nanoTime();
+		long elapsedTimeTJ = -1;
 		List<Movie> result = null;
+
+		long startTimeTJ = System.nanoTime();
 		if (!starName.equals("null")) {
 			result = movieRepository.findByStarsNameContainingIgnoreCase(starName);
 			for (Movie movie : result) {
@@ -82,6 +94,7 @@ public class MovieServiceImpl implements MovieService {
 			}
 		}
 		else {
+
 			result = movieRepository.findAll(new Specification<Movie>() {
 				@Override
 				public Predicate toPredicate(Root<Movie> root, CriteriaQuery<?> query,
@@ -109,9 +122,42 @@ public class MovieServiceImpl implements MovieService {
 					return criteriaBuilder.and(predicates.toArray(new Predicate[predicates.size()]));
 				}
 			});
+
 		}
+		long endTimeTJ = System.nanoTime();
+
+		elapsedTimeTJ = endTimeTJ - startTimeTJ;
 		
-		return movieToDto(result);
+		List<MovieDto> movieToDto = movieToDto(result);
+		long endTimeTS = System.nanoTime();
+
+		long elapsedTimeTS = endTimeTS - startTimeTS;
+
+		System.out.println(elapsedTimeTJ);
+
+		System.out.println(elapsedTimeTS);
+
+		try {
+			File file = new File("../logs/log.txt");
+			if (file.createNewFile()) {
+				FileWriter myWriter = new FileWriter(file.getName());
+				myWriter.write("TS : " + elapsedTimeTS + ", TJ : " + elapsedTimeTJ + "\n");
+				myWriter.close();
+			} else {
+				FileWriter myWriter = new FileWriter(file, true);
+				myWriter.write("TS : " + elapsedTimeTS + ", TJ : " + elapsedTimeTJ + "\n");
+				myWriter.close();
+
+			}
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return movieToDto;
 	}
 
 	private List<MovieDto> movieToDto(List<Movie> moviesList) {
