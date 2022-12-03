@@ -1,34 +1,32 @@
 # cs122b-fall-team-38
-- # General
-    - ## Our img/* folder is [/graphImages](https://github.com/uci-jherold2-teaching/cs122b-fall-team-38/tree/main/graphImages)
-    - ## Out logs/* folder is [/logs](https://github.com/uci-jherold2-teaching/cs122b-fall-team-38/tree/main/logs)
+- ## General
+    - #### Our img/* folder is [/graphImages](https://github.com/uci-jherold2-teaching/cs122b-fall-team-38/tree/main/graphImages)
+    - #### Out logs/* folder is [/logs](https://github.com/uci-jherold2-teaching/cs122b-fall-team-38/tree/main/logs)
 	- #### Team#: 38
 	- #### Contributions: Derek Lam (doing it solo)
 
-## Demo Video
-	- View our Project 1 Demo Video here: https://youtu.be/4h4_VF9epUQ 
-	- View our Project 2 Demo Video here: https://youtu.be/7PqNQ-MBd_g 
-	- View our Project 3 Demo Video here: https://youtu.be/DYmaoLrQGE8
-	- View our Project 4 Demo Video here: https://youtu.be/3_g7o0DEKRU
+- ## Demo Video
+- View our Project 1 Demo Video here: https://youtu.be/4h4_VF9epUQ 
+- View our Project 2 Demo Video here: https://youtu.be/7PqNQ-MBd_g 
+- View our Project 3 Demo Video here: https://youtu.be/DYmaoLrQGE8
+- View our Project 4 Demo Video here: https://youtu.be/3_g7o0DEKRU
 
 
 - # Project 1: Setup AWS, MySQL, JDBC, Tomcat, Start FabFlix
-- #### FabFlix is an eCommerce platform designed using the full stack web application where a user can browse for the movies and make a purchase for a Movie when needed.The backend is a spring boot application which is used to create apis. This seperates the frontend from backend making it more efficient. The design is supported user authentication and a reCaptcha. We hosted FabFlix on a single AWS EC2 instance which was running on an Ubuntu Linux Operating system.
+	FabFlix is an eCommerce platform designed using the full stack web application where a user can browse for the movies and make a purchase for a Movie when needed.The backend is a spring boot application which is used to create apis. This seperates the frontend from backend making it more efficient. The design is supported user authentication and a reCaptcha. We hosted FabFlix on a single AWS EC2 instance which was running on an Ubuntu Linux Operating system.
 
 - # Project 2: Developing FabFlix Website
-- #### The other step for deployment was deploying it using the TomCAT platform. You will grab the WAR File which was generated and deploy it using the TomCat web manager. This can also be done manually by placing the WAR file into the TOMCAT webapps directory. From here you can also run the application. \
+	The other step for deployment was deploying it using the TomCAT platform. You will grab the WAR File which was generated and deploy it using the TomCat web manager. This can also be done manually by placing the WAR file into the TOMCAT webapps directory. From here you can also run the application.
 
 - # Project 3: reCAPTCHA, HTTPS, PreparedStatement, StoredProcedure, XML Parsing 
-- #### This Project is about securing the website using Recaptcha and https. Also to protect from sql injection attack use of Prepared Statements is done.
-The passwords stored in the database are also encrypted using strong password encryptor and is decrypted on login by user.
-To load Bulk Data a SAX Xml Paser is made which can read data and do a bulk insert into the database.
+	This Project is about securing the website using Recaptcha and https. Also to protect from sql injection attack use of Prepared Statements is done.The passwords stored in the database are also encrypted using strong password encryptor and is decrypted on login by user.To load Bulk Data a SAX Xml Paser is made which can read data and do a bulk insert into the database.
 
 
 - # Project 4: Full Text Search, Autocomplete, Android Application, Fuzzy Search
-- #### This Project is about creating autocomplete search anf full text-search on FabFlix website.We have also created an Android app for the FabFlix.\
+	This Project is about creating autocomplete search anf full text-search on FabFlix website.We have also created an Android app for the FabFlix.
 
 - # Project 5 : Scaling FabFlix and performance Tuning
-- #### In this we made use of the Master and Slave MySQL setup to host the two instances. Then we created another instance which is used asn the Apache Load Blancer which was handling both the incoming traffic and the redirecting it to the other two instances. This was designed to ease the load in case there was a high traffic.We also implemented Connection pooling to speed the the serve time of instances.\
+	In this we made use of the Master and Slave MySQL setup to host the two instances. Then we created another instance which is used asn the Apache Load Blancer which was handling both the incoming traffic and the redirecting it to the other two instances. This was designed to ease the load in case there was a high traffic.We also implemented Connection pooling to speed the the serve time of instances.
 
 - # Connection Pooling
     - #### filename/path of all code/configuration files in GitHub of using JDBC Connection Pooling.
@@ -59,17 +57,19 @@ To load Bulk Data a SAX Xml Paser is made which can read data and do a bulk inse
 
 | **Single-instance Version Test Plan**          | **Graph Results Screenshot** | **Average Query Time(ms)** | **Average Search Servlet Time(ms)** | **Average JDBC Time(ms)** | **Analysis** |
 |------------------------------------------------|------------------------------|----------------------------|-------------------------------------|---------------------------|--------------|
-| Case 1: HTTP/1 thread                          | ![](https://github.com/uci-jherold2-teaching/cs122b-fall-team-38/blob/main/graphImages/SIngle%20Instance%201%20HTTP.png)   | 260                         | 260.19644208932624                                 | 257.0862982588948                        |  |
-| Case 2: HTTP/10 threads                        | ![](https://github.com/uci-jherold2-teaching/cs122b-fall-team-38/blob/main/graphImages/Single%20Instance%2010%20HTTP.png)   | 298                         | 292.31772259889544                                  | 290.49243410713484                        |  |
-| Case 3: HTTPS/10 threads                       | ![](https://github.com/uci-jherold2-teaching/cs122b-fall-team-38/blob/main/graphImages/Single%20Instance%2010%20HTTPS.png)   | 290                         | 288.7266443414048                                  | 287.1040271337798                       |  |
-| Case 4: HTTP/10 threads/No connection pooling  | ![](https://github.com/uci-jherold2-teaching/cs122b-fall-team-38/blob/main/graphImages/Single%20Instance%2010%20(without%20CP).png)   | 322                         | 320.9089584850692                                  | 318.86016023306627                        |  |
+| Case 1: HTTP/1 thread                          | ![](https://github.com/uci-jherold2-teaching/cs122b-fall-team-38/blob/main/graphImages/SIngle%20Instance%201%20HTTP.png)   | 260                         | 260.19644208932624                                 | 257.0862982588948                        | There is slight decrease in time as compared to no connection pooling.  |
+| Case 2: HTTP/10 threads                        | ![](https://github.com/uci-jherold2-teaching/cs122b-fall-team-38/blob/main/graphImages/Single%20Instance%2010%20HTTP.png)   | 298                         | 292.31772259889544                                  | 290.49243410713484                        | There is slight increase in TS TJ since we have 10 threads running. |
+| Case 3: HTTPS/10 threads                       | ![](https://github.com/uci-jherold2-teaching/cs122b-fall-team-38/blob/main/graphImages/Single%20Instance%2010%20HTTPS.png)   | 301                         | 298.03853038153557                                  |  295.446255299105                       | We see that HTTPS thread took a little longer time than HTTP |
+| Case 4: HTTP/10 threads/No connection pooling  | ![](https://github.com/uci-jherold2-teaching/cs122b-fall-team-38/blob/main/graphImages/Single%20Instance%2010%20(without%20CP).png)   | 322                         | 320.9089584850692                                  | 318.86016023306627                        | This took the most amount of time to execute probably because of no scaling and connection pooling. |
 
 | **Scaled Version Test Plan**                   | **Graph Results Screenshot** | **Average Query Time(ms)** | **Average Search Servlet Time(ms)** | **Average JDBC Time(ms)** | **Analysis** |
 |------------------------------------------------|------------------------------|----------------------------|-------------------------------------|---------------------------|--------------|
-| Case 1: HTTP/1 thread                          | ![](https://github.com/uci-jherold2-teaching/cs122b-fall-team-38/blob/main/graphImages/Scaled%20Instance%201%20HTTP.png)   | 266                         | 260.2785768357305                                  | 258.9981074943225                        |    |
-| Case 2: HTTP/10 threads                        | ![](https://github.com/uci-jherold2-teaching/cs122b-fall-team-38/blob/main/graphImages/Scaled%20Instance%2010%20HTTP.png)   | 260                         | 259.0551990251828                                  | 257.5515028432169                        | |
-| Case 3: HTTP/10 threads/No connection pooling  | ![](https://github.com/uci-jherold2-teaching/cs122b-fall-team-38/blob/main/graphImages/Scaled%20Instance%2010%20(without%20CP).png)   | 258                         | 256.3338820121148 | 254.92671846194364                        |      |
+| Case 1: HTTP/1 thread                          | ![](https://github.com/uci-jherold2-teaching/cs122b-fall-team-38/blob/main/graphImages/Scaled%20Instance%201%20HTTP.png)   | 266                         | 260.2785768357305                                  | 258.9981074943225                        |  The average TS TJ is almost the same as the single instances. even though we split the requests between the two instances.  |
+| Case 2: HTTP/10 threads                        | ![](https://github.com/uci-jherold2-teaching/cs122b-fall-team-38/blob/main/graphImages/Scaled%20Instance%2010%20HTTP.png)   | 268                         | 264.1678929172946                                  | 262.2580444996011                        | The average TS TJ has only slighly increased even though threads are increased to 10. We can observe there is a huge difference of throughput while executing thread 1 and thread 10. |
+| Case 3: HTTP/10 threads/No connection pooling  | ![](https://github.com/uci-jherold2-teaching/cs122b-fall-team-38/blob/main/graphImages/Scaled%20Instance%2010%20(without%20CP).png)   | 258                         | 256.3338820121148 | 254.92671846194364                        |  In contrast with our expection TS and TJ without connection pooling also has similar TS and TJ as with connection pooling.    |
 
+| **GCP Version Test Plan**                   | **Graph Results Screenshot** | **Average Query Time(ms)** | **Average Search Servlet Time(ms)** | **Average JDBC Time(ms)** | **Analysis** |
+| Case 1: HTTP/10 thread                          | ![](https://github.com/uci-jherold2-teaching/cs122b-fall-team-38/blob/main/graphImages/GCP%20Instance%2010%20HTTP.png)   | 266                         | 260.2785768357305                                  | 258.9981074943225                        |  The average TS and TJ from GCP LOad balancer was slight better than AWS Load balancer.  |
 ## Inconsistences
 We have written in 3 files [inconsistentGenreInMovies.md](https://github.com/uci-jherold2-teaching/cs122b-fall-team-38/blob/main/SAXParser/inconsistentGenreInMovies.md) , [inconsistentGenres.md](https://github.com/uci-jherold2-teaching/cs122b-fall-team-38/blob/main/SAXParser/inconsistentGenres.md) and [inconsistentYear.md](https://github.com/uci-jherold2-teaching/cs122b-fall-team-38/blob/main/SAXParser/inconsistentYear.md)
 
