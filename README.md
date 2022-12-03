@@ -10,6 +10,7 @@
 - View our Project 2 Demo Video here: https://youtu.be/7PqNQ-MBd_g 
 - View our Project 3 Demo Video here: https://youtu.be/DYmaoLrQGE8
 - View our Project 4 Demo Video here: https://youtu.be/3_g7o0DEKRU
+- View our Project 5 Demo Video here: https://youtu.be/3_g7o0DEKRU
 
 
 - # Project 1: Setup AWS, MySQL, JDBC, Tomcat, Start FabFlix
@@ -41,7 +42,7 @@
 - # Master/Slave
     - #### Include the filename/path of all code/configuration files in GitHub of routing queries to Master/Slave SQL.
         - All Repositories use master/slave implementation  /backend/src/main/java/com/fabflix/repository/*Repository.java
-        -[application.properties](https://github.com/uci-jherold2-teaching/cs122b-fall-team-38/blob/main/backend/src/main/resources/application.properties)
+        - [application.properties](https://github.com/uci-jherold2-teaching/cs122b-fall-team-38/blob/main/backend/src/main/resources/application.properties)
     
 	- #### How read/write requests were routed to Master/Slave SQL?
 		With MySQL Replication  using mysql and connector/j, a client or web app reads and writes to MySQL Master but only reads to MySQL slave.Connector/j automatically routes the queries to masters and slaves in round-robin fashion. In our FabFlix, we route write requests to Master while allowing read requests to either Master or Slave.Read Requests are defined using @Transational(readOnly=true) while write requests are defined using @Transactional(readOnly=False).
@@ -67,9 +68,10 @@
 | Case 1: HTTP/1 thread                          | ![](https://github.com/uci-jherold2-teaching/cs122b-fall-team-38/blob/main/graphImages/Scaled%20Instance%201%20HTTP.png)   | 266                         | 260.2785768357305                                  | 258.9981074943225                        |  The average TS TJ is almost the same as the single instances. even though we split the requests between the two instances.  |
 | Case 2: HTTP/10 threads                        | ![](https://github.com/uci-jherold2-teaching/cs122b-fall-team-38/blob/main/graphImages/Scaled%20Instance%2010%20HTTP.png)   | 268                         | 264.1678929172946                                  | 262.2580444996011                        | The average TS TJ has only slighly increased even though threads are increased to 10. We can observe there is a huge difference of throughput while executing thread 1 and thread 10. |
 | Case 3: HTTP/10 threads/No connection pooling  | ![](https://github.com/uci-jherold2-teaching/cs122b-fall-team-38/blob/main/graphImages/Scaled%20Instance%2010%20(without%20CP).png)   | 258                         | 256.3338820121148 | 254.92671846194364                        |  In contrast with our expection TS and TJ without connection pooling also has similar TS and TJ as with connection pooling.    |
-
+|------------------------------------------------|------------------------------|----------------------------|-------------------------------------|---------------------------|--------------|
 | **GCP Version Test Plan**                   | **Graph Results Screenshot** | **Average Query Time(ms)** | **Average Search Servlet Time(ms)** | **Average JDBC Time(ms)** | **Analysis** |
 | Case 1: HTTP/10 thread                          | ![](https://github.com/uci-jherold2-teaching/cs122b-fall-team-38/blob/main/graphImages/GCP%20Instance%2010%20HTTP.png)   | 266                         | 260.2785768357305                                  | 258.9981074943225                        |  The average TS and TJ from GCP LOad balancer was slight better than AWS Load balancer.  |
+
 ## Inconsistences
 We have written in 3 files [inconsistentGenreInMovies.md](https://github.com/uci-jherold2-teaching/cs122b-fall-team-38/blob/main/SAXParser/inconsistentGenreInMovies.md) , [inconsistentGenres.md](https://github.com/uci-jherold2-teaching/cs122b-fall-team-38/blob/main/SAXParser/inconsistentGenres.md) and [inconsistentYear.md](https://github.com/uci-jherold2-teaching/cs122b-fall-team-38/blob/main/SAXParser/inconsistentYear.md)
 
