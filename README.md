@@ -10,7 +10,7 @@
 - View our Project 2 Demo Video here: https://youtu.be/7PqNQ-MBd_g 
 - View our Project 3 Demo Video here: https://youtu.be/DYmaoLrQGE8
 - View our Project 4 Demo Video here: https://youtu.be/3_g7o0DEKRU
-- View our Project 5 Demo Video here: https://youtu.be/3_g7o0DEKRU
+- View our Project 5 Demo Video here: https://youtu.be/Dbaf5O5aAjQ
 
 
 - # Project 1: Setup AWS, MySQL, JDBC, Tomcat, Start FabFlix
