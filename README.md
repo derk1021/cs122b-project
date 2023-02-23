@@ -14,30 +14,29 @@
 
 
 - # Project 1: Setup AWS, MySQL, JDBC, Tomcat, Start FabFlix
-	FabFlix is an eCommerce platform designed using the full stack web application where a user can browse for the movies and make a purchase for a Movie when needed. The backend is a spring boot application which is used to create apis. This seperates the frontend from backend making it more efficient. The design is supported user authentication and a reCaptcha. We hosted FabFlix on a single AWS EC2 instance which was running on an Ubuntu Linux Operating system.
+	FabFlix is an commerical platform designed using the full stack web application where a user can browse for the movies and make a purchase for a Movie when needed. The backend is a spring boot application which is used to create APIs. This seperates the frontend from backend making it more efficient. The design is supported user authentication and a reCaptcha. We hosted FabFlix on a single AWS EC2 instance which was running on an Ubuntu Linux Operating system.
 
 - # Project 2: Developing FabFlix Website
 	The other step for deployment was deploying it using the TomCAT platform. You will grab the WAR File which was generated and deploy it using the TomCat web manager. This can also be done manually by placing the WAR file into the TOMCAT webapps directory. From here you can also run the application.
 
 - # Project 3: reCAPTCHA, HTTPS, PreparedStatement, StoredProcedure, XML Parsing 
-	This Project is about securing the website using Recaptcha and https. Also to protect from sql injection attack use of Prepared Statements is done.The passwords stored in the database are also encrypted using strong password encryptor and is decrypted on login by user.To load Bulk Data a SAX Xml Paser is made which can read data and do a bulk insert into the database.
-
+	This Project is about securing the website using Recaptcha and HTTPS. Also to protect from a SQL injection attack, I made use of Prepared Statements. The passwords stored in the database are also encrypted using strong password encryptor and is decrypted on login by user. To load Bulk Data, a SAX Xml Paser is made which can read data and do a bulk insert into the database.
 
 - # Project 4: Full Text Search, Autocomplete, Android Application, Fuzzy Search
 	This Project is about creating autocomplete search anf full text-search on FabFlix website.We have also created an Android app for the FabFlix.
 
 - # Project 5 : Scaling FabFlix and performance Tuning
-	In this we made use of the Master and Slave MySQL setup to host the two instances. Then we created another instance which is used asn the Apache Load Blancer which was handling both the incoming traffic and the redirecting it to the other two instances. This was designed to ease the load in case there was a high traffic.We also implemented Connection pooling to speed the the serve time of instances.
+	In this we made use of the Master and Slave MySQL setup to host the two instances. Then we created another instance called the Apache Load Balancer which handled both the incoming traffic and the redirection of it to the other two instances. This was designed to ease the load in case there was a high traffic. We also implemented Connection pooling to speed the the serve time of instances.
 
 - # Connection Pooling
     - #### filename/path of all code/configuration files in GitHub of using JDBC Connection Pooling.
         - [application.properties](https://github.com/uci-jherold2-teaching/cs122b-fall-team-38/blob/main/backend/src/main/resources/application.properties)
 
 	- #### how Connection Pooling is utilized in the Fabflix code ?
-	In the past, the Tomcat Servlet established a connection to the database using a url, created connections, and executed queries. Setting up new connections and running new queries every time meant that this took a long time. By creating a more secure connection that is saved in "application.properties" Connection Pooling allows us to speed up the process.When we request connections, the pre-existing connections in the pool are used instead of having to be formed from scratch. When the connection is ended,  the connection returns to the pool for future usage.
+		In the past, the Tomcat Servlet established a connection to the database using a url, created connections, and executed queries. Setting up new connections and running new queries every time meant that this took a long time. By creating a more secure connection that is saved in "application.properties" Connection Pooling allows us to speed up the process. When we request connections, the pre-existing connections in the pool are used instead of having to be formed from scratch. When the connection is ended, it returns to the pool for future usage.
 	
 	- #### Explain how Connection Pooling works with two backend SQL.
-    With two backend SQL, we have our database connection to either the Master or Slave's database, and achieves the same purpose explained as above, saving time on establishing and freeing connections.
+    		With two backend SQL, we have our database connection to either the Master or Slave's database, and this achieves the same purpose explained as above, saving time on establishing and freeing connections.
 
 - # Master/Slave
     - #### Include the filename/path of all code/configuration files in GitHub of routing queries to Master/Slave SQL.
@@ -45,7 +44,7 @@
         - [application.properties](https://github.com/uci-jherold2-teaching/cs122b-fall-team-38/blob/main/backend/src/main/resources/application.properties)
     
 	- #### How read/write requests were routed to Master/Slave SQL?
-		With MySQL Replication  using mysql and connector/j, a client or web app reads and writes to MySQL Master but only reads to MySQL slave.Connector/j automatically routes the queries to masters and slaves in round-robin fashion. In our FabFlix, we route write requests to Master while allowing read requests to either Master or Slave.Read Requests are defined using @Transational(readOnly=true) while write requests are defined using @Transactional(readOnly=False).
+		With MySQL Replication, using mysql and connector/j, a client or web app reads and writes to MySQL Master but only reads to MySQL slave.Connector/j automatically routes the queries to masters and slaves in round-robin fashion. In our FabFlix, we route write requests to Master while allowing read requests to either Master or Slave. Read Requests are defined using @Transational(readOnly=true) while write requests are defined using @Transactional(readOnly=False).
 
 - # JMeter TS/TJ Time Logs
     - #### Instructions of how to use the `log_processing.*` script to process the JMeter logs.
